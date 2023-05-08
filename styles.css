@@ -18,4 +18,129 @@ canvas{
     border: 5px solid #47FFFE;
     background-color: #FFF9A7;
     border-radius: 5px;
+    margin-bottom: 50px;
+}
+
+.btns{
+    display: grid;
+    margin-bottom: 50px;
+    grid-template-columns: repeat(3, minmax(60px, 140px));
+    grid-template-rows: repeat(3, 40px);
+    grid-template-areas: 
+    " . up ."
+    "left . right"
+    ". down ."
+    ;
+    justify-items: center;
+    align-items: center;
+    margin: 0 auto 50px;
+}
+
+#up{
+    grid-area: up;
+}
+
+#left{
+    grid-area: left;
+}
+
+#right{
+    grid-area: right;
+}
+
+#down{
+    grid-area: down;
+}
+
+.btns button{
+    width: 80%;
+    min-width: 50%;
+    height: 80%;
+    background-color: #D03ED3;
+    color: #FFE1FF;
+    font-weight: 700;
+    border-radius: 5px;
+    border: 2px solid #FFE1FF;
+    cursor: pointer;
+    box-shadow: 2px 2px 3px 2px #D03ED3;
+
+}
+
+.fa-caret-left{
+    margin-right: 5px;
+}
+
+.fa-caret-right{
+    margin-left: 5px;
+}
+
+.fa-caret-left, .fa-caret-up, .fa-caret-down, .fa-caret-right{
+    font-size: 16px;
+}
+
+.button-media{
+    display: none;
+}
+
+.messages{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(60px, 140px));
+    grid-template-rows: repeat(3, 40px);
+    grid-template-areas: 
+    "life ."
+    "timer ."
+    "record ."
+    ;
+}
+
+.life{
+    grid-area: life;
+}
+.timer{
+    grid-area: timer;
+}
+.record{
+    grid-area: record;
+}
+
+.messages p{
+    color: #FFFD5F;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 3px #EEB014;
+}
+
+/*Medias queries*/
+
+@media screen and (max-width: 500px){
+    .button-big{
+        display: none;
+    }
+
+    .button-media{
+        display: block;
+    }
+
+    #up-cel{
+        grid-area: up;
+    }
+    
+    #left-cel{
+        grid-area: left;
+        justify-self: end;
+    }
+    
+    #right-cel{
+        grid-area: right;
+        justify-self: start;
+
+    }
+    
+    #down-cel{
+        grid-area: down;
+    }
+
+    .fa-caret-left, .fa-caret-up, .fa-caret-down, .fa-caret-right{
+        font-size: 26px;
+    }
 }
