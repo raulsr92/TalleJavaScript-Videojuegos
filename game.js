@@ -11,7 +11,19 @@ const game = canvas.getContext("2d");
 
 window.addEventListener("load", startGame);
 
-
 function startGame(){
+    game.fillRect(5, 5, 100, 100);
+    console.log(game);
 
-}
+    game.clearRect(5, 5, 50, 50);
+
+    game.clearRect(55, 55, 50, 50);
+
+    game.font="20px Verdana";
+    game.fillStyle = "Green";
+    game.textAlign = "right";
+    game.fillText("Raúl", 50, 35);
+
+
+
+};
