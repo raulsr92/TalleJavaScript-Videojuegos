@@ -5,13 +5,14 @@
 }
 
 .game-container{
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background-color: #B990F3;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 40px;
 }
 
 canvas{
@@ -92,6 +93,7 @@ canvas{
     "timer ."
     "record ."
     ;
+    padding-bottom: 60px;
 }
 
 .life{
