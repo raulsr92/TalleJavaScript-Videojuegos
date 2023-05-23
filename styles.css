@@ -5,22 +5,28 @@
 }
 
 .game-container{
-    width: 100%;
     height: 100%;
+    width: 100%;
     background-color: #B990F3;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding-top: 40px;
+    padding-bottom: 40px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: 
+    "main info"
+    "buttons ."
+    ;
+    row-gap: 15px;
 }
 
 canvas{
     border: 5px solid #47FFFE;
     background-color: #FFF9A7;
     border-radius: 5px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     margin-top: 10px;
+    justify-self: center;
+    grid-area: main;
 }
 
 .btns{
@@ -35,7 +41,9 @@ canvas{
     ;
     justify-items: center;
     align-items: center;
-    margin: 0 auto 50px;
+    margin: 0 auto 20px;
+    grid-area: buttons;
+
 }
 
 #up{
@@ -94,6 +102,11 @@ canvas{
     "record ."
     ;
     padding-bottom: 60px;
+    justify-self: center;
+    grid-area: info;
+    align-self:center;
+    justify-self: start;
+    
 }
 
 .life{
@@ -116,6 +129,23 @@ canvas{
 /*Medias queries*/
 
 @media screen and (max-width: 500px){
+    .game-container{
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "main "
+        "buttons"
+        "info"
+        ;
+        row-gap: 0;
+        padding-top: 15px;
+   
+    }
+
+    .messages{
+        justify-self: center;
+    }
+
+
     .button-big{
         display: none;
     }

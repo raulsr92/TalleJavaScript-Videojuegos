@@ -19,9 +19,9 @@ function startGame(){
     let canvaSize;
 
     if(window.innerHeight > window.innerWidth){
-        canvaSize = window.innerWidth *0.8;
+        canvaSize = window.innerWidth *0.7;
     } else{
-        canvaSize= window.innerHeight * 0.8
+        canvaSize= window.innerHeight * 0.7
     }
 
 
