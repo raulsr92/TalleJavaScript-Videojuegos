@@ -34,6 +34,28 @@ function startGame(){
     console.log(canvas.height);
     console.log(canvas.width);
 
+    //Establecer el tamaño de un elemento del canvas(10x10)
+
+    const elementSize=canvaSize/10;
+    console.log(elementSize);
+    
+    game.font = elementSize + "px Verdana";
+    //1era_fila
+    game.fillText(emojis['X'], 0, elementSize);
+    game.fillText(emojis['X'], elementSize, elementSize);
+    game.fillText(emojis['X'], elementSize*2, elementSize);
+    game.fillText(emojis['X'], elementSize*3, elementSize);
+
+    //2da_fila
+    game.fillText(emojis['X'], 0, elementSize*2);
+    game.fillText(emojis['X'], elementSize, elementSize*2);
+    game.fillText(emojis['X'], elementSize*2, elementSize*2);
+    game.fillText(emojis['X'], elementSize*3, elementSize*2);
+
+
+
+
+
     /*
     game.fillRect(5, 5, 100, 100);
     console.log(game);
