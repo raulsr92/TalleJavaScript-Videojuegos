@@ -13,8 +13,13 @@ console.log(game);
 
 window.addEventListener("load", startGame);
 
+window.addEventListener("resize", startGame);
+
 
 function startGame(){
+
+    // Clase N° 03
+    //Establecer el tamaño de un elemento del canvas(10x10)
 
     let canvaSize;
 
@@ -53,21 +58,14 @@ function startGame(){
     game.fillText(emojis['X'], elementSize*7, elementSize);
     game.fillText(emojis['X'], elementSize*8, elementSize);
     game.fillText(emojis['X'], elementSize*9, elementSize);*/
-
-
-
    
    for (let j = 1; j <= 10 ; j++) {
     
    for (let i = 0; i < 10; i++) {
 
-    game.fillText(emojis['X'], elementSize*i, elementSize*j)
+    game.fillText(emojis['X'], (elementSize*i), elementSize*j)
    }
     } 
-
-
-
-
     /*
     game.fillRect(5, 5, 100, 100);
     console.log(game);
@@ -78,7 +76,8 @@ function startGame(){
     game.textAlign = "right";
     game.fillText("Raúl", 50, 35);*/
 
-    
+    // Clase N° 04
+
 
 
 };
