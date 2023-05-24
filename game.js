@@ -40,18 +40,30 @@ function startGame(){
     console.log(elementSize);
     
     game.font = elementSize + "px Verdana";
-    //1era_fila
+
+    //1era_fila - RAUL
+    /*
     game.fillText(emojis['X'], 0, elementSize);
     game.fillText(emojis['X'], elementSize, elementSize);
     game.fillText(emojis['X'], elementSize*2, elementSize);
     game.fillText(emojis['X'], elementSize*3, elementSize);
+    game.fillText(emojis['X'], elementSize*4, elementSize);
+    game.fillText(emojis['X'], elementSize*5, elementSize);
+    game.fillText(emojis['X'], elementSize*6, elementSize);
+    game.fillText(emojis['X'], elementSize*7, elementSize);
+    game.fillText(emojis['X'], elementSize*8, elementSize);
+    game.fillText(emojis['X'], elementSize*9, elementSize);*/
 
-    //2da_fila
-    game.fillText(emojis['X'], 0, elementSize*2);
-    game.fillText(emojis['X'], elementSize, elementSize*2);
-    game.fillText(emojis['X'], elementSize*2, elementSize*2);
-    game.fillText(emojis['X'], elementSize*3, elementSize*2);
 
+
+   
+   for (let j = 1; j <= 10 ; j++) {
+    
+   for (let i = 0; i < 10; i++) {
+
+    game.fillText(emojis['X'], elementSize*i, elementSize*j)
+   }
+    } 
 
 
 
