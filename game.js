@@ -52,12 +52,24 @@ function startGame(){
 
     game.font = elementSize + "px Verdana";
     
+    
     for (let j = 1; j <= 10 ; j++) {
         for (let i = 0; i < 10; i++) {
-            game.fillText(emojis['X'], (elementSize*i), elementSize*j)
+            game.fillText(emojis[mapRowsCols[j][i]], (elementSize*i), elementSize*j)
         }
     } 
 
+
+
+
+
 };
 
+//Dividir cada mapa en arrays bidimendionales
 
+const mapRows = maps[0].trim().split("\n");
+console.log(mapRows);
+
+const mapRowsClean= mapRows.map(value=>value.trim());
+
+const mapRowsCols=mapRowsClean.map(value=>value.split(""));
