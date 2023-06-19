@@ -54,19 +54,36 @@ function startGame(){
 
 //Dividir cada mapa en arrays bidimendionales
 
-    const mapRows = maps[2].trim().split("\n");
+    const map = maps[0];
+    const mapRows = map.trim().split("\n");
     console.log(mapRows);
     const mapRowsClean= mapRows.map(value=>value.trim());
-    const mapRowsCols=mapRowsClean.map(value=>value.split(""));
+    console.log(mapRowsClean);
 
-    
+    const mapRowsCols=mapRowsClean.map(value=>value.split(""));
+    console.log(mapRowsCols);
+
+    // Uso de método de arrays: arrays.forEach()
+
+    mapRowsCols.forEach((row, rowIndex) => {
+        row.forEach((col, colIndex) => {
+            console.log({row, rowIndex, col, colIndex});
+            const posX = elementSize*colIndex;
+            const posY = elementSize*(rowIndex+1);
+
+            game.fillText(emojis[col],posX, posY)
+        });
+    });
+
+    /*
     for (let j = 1; j <= 10 ; j++) {
         for (let i = 0; i < 10; i++) {
             let emojiShow;
             emojiShow = mapRowsCols[j-1][i];
             game.fillText(emojis[emojiShow], (elementSize*i), elementSize*j)
         }
-    } 
+    } */
+
 
 };
 
