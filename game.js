@@ -84,6 +84,64 @@ function startGame(){
         }
     } */
 
-
 };
 
+/*Clase 8: Crear evento que escuche botones de dirección*/
+
+let btnUp, btnDown, btnRight, btnLeft;
+let btnUp2, btnDown2, btnRight2, btnLeft2;
+
+
+btnUp=document.querySelector(".btn--up");
+btnUp2=document.querySelector("#up-cel");
+
+console.log(btnUp);
+console.log(btnUp2);
+
+
+btnLeft=document.querySelector(".btn--left");
+btnLeft2=document.querySelector("#left-cel");
+console.log(btnLeft);
+console.log(btnLeft2);
+
+
+btnRight=document.querySelector(".btn--right");
+btnRight2=document.querySelector("#right-cel");
+console.log(btnRight);
+console.log(btnRight2);
+
+
+btnDown=document.querySelector(".btn--down");
+btnDown2=document.querySelector("#down-cel");
+console.log(btnDown);
+console.log(btnDown2);
+
+
+btnUp.addEventListener("click", contadorUp);
+btnUp2.addEventListener("click", contadorUp);
+
+btnLeft.addEventListener("click", contadorLeft);
+btnLeft2.addEventListener("click", contadorLeft);
+
+btnRight.addEventListener("click", contadorRight);
+btnRight2.addEventListener("click", contadorRight);
+
+btnDown.addEventListener("click", contadorDown);
+btnDown2.addEventListener("click", contadorDown);
+
+
+function contadorUp(){
+    console.log("Click_Up");
+}
+
+function contadorLeft(){
+    console.log("Click_Left");
+}
+
+function contadorRight(){
+    console.log("Click_Right");
+}
+
+function contadorDown(){
+    console.log("Click_Down");
+}
