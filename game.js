@@ -129,19 +129,19 @@ btnDown2.addEventListener("click", moveDown);
 
 
 function moveUp(event){
-    console.log("Click_Up");
+    console.log("Movement_Up");
 }
 
 function moveLeft(){
-    console.log("Click_Left");
+    console.log("Movement_Left");
 }
 
 function moveRight(){
-    console.log("Click_Right");
+    console.log("Movement_Right");
 }
 
 function moveDown(){
-    console.log("Click_Down");
+    console.log("Movement_Down");
 }
 
 /*Clase 8: Crear evento que escuche TECLAS de dirección*/
@@ -154,18 +154,18 @@ window.addEventListener("keydown", moveByKeys);
 function moveByKeys(event){
     switch(event.key){
         case "ArrowUp":
-            console.log("TeclaUp_presionada");
+            moveUp();
             break;
         case "ArrowDown":
-            console.log("TeclaDown_presionada");
+            moveDown();
             break;
         case "ArrowLeft":
-            console.log("TeclaLeft_presionada");
+            moveLeft();
             break;
         case "ArrowRight":
-            console.log("TeclaRight_presionada");
+            moveRight();
             break;      
         default:
-            console.log("Otra tecla presionada")                  
+            console.log("No_Movement")                  
     }
 }
