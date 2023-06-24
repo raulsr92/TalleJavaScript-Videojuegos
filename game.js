@@ -91,10 +91,8 @@ function startGame(){
 let btnUp, btnDown, btnRight, btnLeft;
 let btnUp2, btnDown2, btnRight2, btnLeft2;
 
-
 btnUp=document.querySelector(".btn--up");
 btnUp2=document.querySelector("#up-cel");
-
 console.log(btnUp);
 console.log(btnUp2);
 
@@ -117,31 +115,57 @@ console.log(btnDown);
 console.log(btnDown2);
 
 
-btnUp.addEventListener("click", contadorUp);
-btnUp2.addEventListener("click", contadorUp);
+btnUp.addEventListener("click", moveUp);
+btnUp2.addEventListener("click", moveUp);
 
-btnLeft.addEventListener("click", contadorLeft);
-btnLeft2.addEventListener("click", contadorLeft);
+btnLeft.addEventListener("click", moveLeft);
+btnLeft2.addEventListener("click", moveLeft);
 
-btnRight.addEventListener("click", contadorRight);
-btnRight2.addEventListener("click", contadorRight);
+btnRight.addEventListener("click", moveRight);
+btnRight2.addEventListener("click", moveRight);
 
-btnDown.addEventListener("click", contadorDown);
-btnDown2.addEventListener("click", contadorDown);
+btnDown.addEventListener("click", moveDown);
+btnDown2.addEventListener("click", moveDown);
 
 
-function contadorUp(){
+function moveUp(event){
     console.log("Click_Up");
 }
 
-function contadorLeft(){
+function moveLeft(){
     console.log("Click_Left");
 }
 
-function contadorRight(){
+function moveRight(){
     console.log("Click_Right");
 }
 
-function contadorDown(){
+function moveDown(){
     console.log("Click_Down");
+}
+
+/*Clase 8: Crear evento que escuche TECLAS de dirección*/
+
+window.addEventListener("keydown", moveByKeys);
+
+
+//función con su único parámetro: descriptor del evento
+
+function moveByKeys(event){
+    switch(event.key){
+        case "ArrowUp":
+            console.log("TeclaUp_presionada");
+            break;
+        case "ArrowDown":
+            console.log("TeclaDown_presionada");
+            break;
+        case "ArrowLeft":
+            console.log("TeclaLeft_presionada");
+            break;
+        case "ArrowRight":
+            console.log("TeclaRight_presionada");
+            break;      
+        default:
+            console.log("Otra tecla presionada")                  
+    }
 }
