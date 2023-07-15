@@ -1,23 +1,60 @@
-/* 1° Capturar al elemento canvas de html*/
+/*Declaración de variables y objetos*/
+
+let canvaSize, elementSize;
+let btnUp, btnDown, btnRight, btnLeft;
+let btnUp2, btnDown2, btnRight2, btnLeft2;
+
+/*Declaración de variables y objetos*/
 
 const canvas = document.querySelector("#game");
 console.log(canvas);
 
-/* 2° Crear el contexto de Canvas */
-
 const game = canvas.getContext("2d");
 console.log(game);
 
+btnUp=document.querySelector(".btn--up");
+btnUp2=document.querySelector("#up-cel");
+console.log(btnUp);
+console.log(btnUp2);
 
-let canvaSize;
-let elementSize;
+
+btnLeft=document.querySelector(".btn--left");
+btnLeft2=document.querySelector("#left-cel");
+console.log(btnLeft);
+console.log(btnLeft2);
+
+btnRight=document.querySelector(".btn--right");
+btnRight2=document.querySelector("#right-cel");
+console.log(btnRight);
+console.log(btnRight2);
+
+btnDown=document.querySelector(".btn--down");
+btnDown2=document.querySelector("#down-cel");
+console.log(btnDown);
+console.log(btnDown2);
 
 
-/*3°Crear evento y función que va a contener las propiedades y métodos del contexto 2D */
+/*Eventos*/
 
 window.addEventListener("load", setCanvasSize);
 window.addEventListener("resize", setCanvasSize);
 
+btnUp.addEventListener("click", moveUp);
+btnUp2.addEventListener("click", moveUp);
+
+btnLeft.addEventListener("click", moveLeft);
+btnLeft2.addEventListener("click", moveLeft);
+
+btnRight.addEventListener("click", moveRight);
+btnRight2.addEventListener("click", moveRight);
+
+btnDown.addEventListener("click", moveDown);
+btnDown2.addEventListener("click", moveDown);
+
+window.addEventListener("keydown", moveByKeys);
+
+
+/*Funciones*/
 
 function setCanvasSize(){
     // Clase N° 03
@@ -40,11 +77,8 @@ function setCanvasSize(){
     //Establecer el tamaño de un elemento del canvas(10x10)
 
     elementSize=canvaSize/10;
-
     console.log(elementSize);
-    
     startGame();
-
 }
 
 function startGame(){
@@ -69,12 +103,8 @@ function startGame(){
             console.log({row, rowIndex, col, colIndex});
             const posX = elementSize*colIndex;
             const posY = elementSize*(rowIndex+1);
-            console.log({posX,posY})
 
-            game.fillText(emojis[col],posX, posY)  //Renderizado del mapa del juego
-
-
-            //Ubicar posición inicial del JUGADOR
+            game.fillText(emojis[col],posX, posY)
 
             if(col=='O'){
                 playerPosition["x"]=posX;
@@ -83,81 +113,16 @@ function startGame(){
             }
         });
     });
+
+    // Renderizar posición inicial del jugador
     
-
-    /*
-    for (let j = 1; j <= 10 ; j++) {
-        for (let i = 0; i < 10; i++) {
-            let emojiShow;
-            emojiShow = mapRowsCols[j-1][i];
-            game.fillText(emojis[emojiShow], (elementSize*i), elementSize*j)
-        }
-    } */
+    game.fillText(emojis['PLAYER'],playerPosition["x"], [playerPosition["y"]]);
 
 
-    /*Clase 9: Renderizar al jugador*/
-
-    renderizarJugador(playerPosition["x"],playerPosition["y"])
 };
 
-
-function renderizarJugador(x,y) {
-    
-    game.fillText(emojis['PLAYER'],x,y);
-
-}
-
-/*Clase 8: Crear evento que escuche botones de dirección*/
-
-let btnUp, btnDown, btnRight, btnLeft;
-let btnUp2, btnDown2, btnRight2, btnLeft2;
-
-//paso N°01
-btnUp=document.querySelector(".btn--up");
-btnUp2=document.querySelector("#up-cel");
-console.log(btnUp);
-console.log(btnUp2);
-
-
-btnLeft=document.querySelector(".btn--left");
-btnLeft2=document.querySelector("#left-cel");
-console.log(btnLeft);
-console.log(btnLeft2);
-
-btnRight=document.querySelector(".btn--right");
-btnRight2=document.querySelector("#right-cel");
-console.log(btnRight);
-console.log(btnRight2);
-
-btnDown=document.querySelector(".btn--down");
-btnDown2=document.querySelector("#down-cel");
-console.log(btnDown);
-console.log(btnDown2);
-
-//paso N°02
-
-btnUp.addEventListener("click", moveUp);
-btnUp2.addEventListener("click", moveUp);
-
-btnLeft.addEventListener("click", moveLeft);
-btnLeft2.addEventListener("click", moveLeft);
-
-btnRight.addEventListener("click", moveRight);
-btnRight2.addEventListener("click", moveRight);
-
-btnDown.addEventListener("click", moveDown);
-btnDown2.addEventListener("click", moveDown);
-
-
-function moveUp(){
+function moveUp(event){
     console.log("Movement_Up");
-
-    playerPosition["y"]=playerPosition["y"]-elementSize;
-
-    renderizarJugador(playerPosition["x"],playerPosition["y"])
-
-    console.log(playerPosition);
-
 }
 
 function moveLeft(){
@@ -171,13 +136,6 @@ function moveRight(){
 function moveDown(){
     console.log("Movement_Down");
 }
-
-/*Clase 8: Crear evento que escuche TECLAS de dirección*/
-
-window.addEventListener("keydown", moveByKeys);
-
-
-//función con su único parámetro: descriptor del evento
 
 function moveByKeys(event){
     switch(event.key){
@@ -197,11 +155,3 @@ function moveByKeys(event){
             console.log("No_Movement")                  
     }
 }
-
-/*Clase 9: Objeto playerPosition */
-
-const playerPosition = {
-    x:undefined,
-    y:undefined
-}
-
