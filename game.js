@@ -8,10 +8,8 @@ console.log(canvas);
 const game = canvas.getContext("2d");
 console.log(game);
 
-
 let canvaSize;
 let elementSize;
-
 
 /*3°Crear evento y función que va a contener las propiedades y métodos del contexto 2D */
 
@@ -40,11 +38,9 @@ function setCanvasSize(){
     //Establecer el tamaño de un elemento del canvas(10x10)
 
     elementSize=canvaSize/10;
-
     console.log(elementSize);
     
     startGame();
-
 }
 
 function startGame(){
@@ -73,7 +69,6 @@ function startGame(){
 
             game.fillText(emojis[col],posX, posY)  //Renderizado del mapa del juego
 
-
             //Ubicar posición inicial del JUGADOR
 
             if(col=='O'){
@@ -84,7 +79,6 @@ function startGame(){
         });
     });
     
-
     /*
     for (let j = 1; j <= 10 ; j++) {
         for (let i = 0; i < 10; i++) {
@@ -96,15 +90,47 @@ function startGame(){
 
 
     /*Clase 9: Renderizar al jugador*/
-
     renderizarJugador(playerPosition["x"],playerPosition["y"])
 };
 
 
-function renderizarJugador(x,y) {
-    
-    game.fillText(emojis['PLAYER'],x,y);
+function reStartGame(){
+    game.font = elementSize + "px Verdana";
+    const map = maps[0];
+    const mapRows = map.trim().split("\n");
+    console.log(mapRows);
+    const mapRowsClean= mapRows.map(value=>value.trim());
+    console.log(mapRowsClean);
+    const mapRowsCols=mapRowsClean.map(value=>value.split(""));
+    console.log(mapRowsCols);
 
+    // Uso de método de arrays: arrays.forEach()
+    mapRowsCols.forEach((row, rowIndex) => {
+        row.forEach((col, colIndex) => {
+            console.log({row, rowIndex, col, colIndex});
+            const posX = elementSize*colIndex;
+            const posY = elementSize*(rowIndex+1);
+            console.log({posX,posY})
+
+            game.fillText(emojis[col],posX, posY)  //Renderizado del mapa del juego
+            //Ubicar la última posición del JUGADOR
+            if(col=='PLAYER'){
+                playerPosition["x"]=posX;
+                playerPosition["y"]=posY;
+                console.log({playerPosition});
+            }
+        });
+    });
+};
+
+function renderizarJugador(x,y) {    
+    game.fillText(emojis['PLAYER'],x,y);
+}
+
+/*Clase 10: Crear f paara borrar lo renderizado*/
+
+function clearGame() {
+    game.reset();   
 }
 
 /*Clase 8: Crear evento que escuche botones de dirección*/
@@ -152,12 +178,12 @@ btnDown2.addEventListener("click", moveDown);
 function moveUp(){
     console.log("Movement_Up");
 
+    clearGame();
+    reStartGame();
+
     playerPosition["y"]=playerPosition["y"]-elementSize;
-
-    renderizarJugador(playerPosition["x"],playerPosition["y"])
-
+    renderizarJugador(playerPosition["x"],playerPosition["y"]);
     console.log(playerPosition);
-
 }
 
 function moveLeft(){
@@ -166,7 +192,7 @@ function moveLeft(){
 
 function moveRight(){
     console.log("Movement_Right");
-}
+} 
 
 function moveDown(){
     console.log("Movement_Down");
