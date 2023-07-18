@@ -188,14 +188,34 @@ function moveUp(){
 
 function moveLeft(){
     console.log("Movement_Left");
+    clearGame();
+    reStartGame();
+
+    playerPosition["x"]=playerPosition["x"]-elementSize;
+    renderizarJugador(playerPosition["x"],playerPosition["y"]);
+    console.log(playerPosition);
+     
 }
 
 function moveRight(){
     console.log("Movement_Right");
+    clearGame();
+    reStartGame();
+
+    playerPosition["x"]=playerPosition["x"]+elementSize;
+    renderizarJugador(playerPosition["x"],playerPosition["y"]);
+    console.log(playerPosition);
 } 
 
 function moveDown(){
     console.log("Movement_Down");
+
+    clearGame();
+    reStartGame();
+
+    playerPosition["y"]=playerPosition["y"]+elementSize;
+    renderizarJugador(playerPosition["x"],playerPosition["y"]);
+    console.log(playerPosition);
 }
 
 /*Clase 8: Crear evento que escuche TECLAS de dirección*/
