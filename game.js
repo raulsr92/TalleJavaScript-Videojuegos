@@ -181,7 +181,11 @@ function moveUp(){
     clearGame();
     reStartGame();
 
-    playerPosition["y"]=playerPosition["y"]-elementSize;
+//Agregar condicional para evitar que jugador se salga del mapa
+
+    if(playerPosition["y"]>(elementSize+1)){    //agrega 1 para evitar error por decimales
+        playerPosition["y"]=playerPosition["y"]-elementSize;
+    } 
     renderizarJugador(playerPosition["x"],playerPosition["y"]);
     console.log(playerPosition);
 }
@@ -191,7 +195,12 @@ function moveLeft(){
     clearGame();
     reStartGame();
 
-    playerPosition["x"]=playerPosition["x"]-elementSize;
+//Agregar condicional para evitar que jugador se salga del mapa
+
+    if(playerPosition["x"]>1){          //Se establece 1 para evitar error por decimales
+        playerPosition["x"]=playerPosition["x"]-elementSize;
+    }
+
     renderizarJugador(playerPosition["x"],playerPosition["y"]);
     console.log(playerPosition);
      
@@ -202,7 +211,12 @@ function moveRight(){
     clearGame();
     reStartGame();
 
-    playerPosition["x"]=playerPosition["x"]+elementSize;
+//Agregar condicional para evitar que jugador se salga del mapa
+
+    if(playerPosition["x"]<((canvaSize-elementSize)-1)){      //Se resta 1 para evitar error por decimales
+        playerPosition["x"]=playerPosition["x"]+elementSize;
+    }
+
     renderizarJugador(playerPosition["x"],playerPosition["y"]);
     console.log(playerPosition);
 } 
@@ -213,7 +227,12 @@ function moveDown(){
     clearGame();
     reStartGame();
 
-    playerPosition["y"]=playerPosition["y"]+elementSize;
+//Agregar condicional para evitar que jugador se salga del mapa
+    
+    if(playerPosition["y"]<(canvaSize)){
+        playerPosition["y"]=playerPosition["y"]+elementSize;
+    } 
+
     renderizarJugador(playerPosition["x"],playerPosition["y"]);
     console.log(playerPosition);
 }
