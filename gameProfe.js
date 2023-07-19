@@ -136,7 +136,10 @@ btnDown2.addEventListener("click", moveDown);
 function moveUp(){
     console.log("Movement_Up");
 
-    playerPosition["y"]=playerPosition["y"]-elementSize;
+    if(playerPosition["y"]>(elementSize+1)){    //agrega 1 para evitar error por decimales
+        playerPosition["y"]=playerPosition["y"]-elementSize;
+    } 
+
     startGame();
     console.log(playerPosition);
 }
@@ -144,7 +147,10 @@ function moveUp(){
 function moveLeft(){
     console.log("Movement_Left");
 
-    playerPosition["x"]=playerPosition["x"]-elementSize;
+    if(playerPosition["x"]>1){          //Se establece 1 para evitar error por decimales
+        playerPosition["x"]=playerPosition["x"]-elementSize;
+    }
+
     startGame();
     console.log(playerPosition);
 
@@ -153,7 +159,10 @@ function moveLeft(){
 function moveRight(){
     console.log("Movement_Right");
 
-    playerPosition["x"]=playerPosition["x"]+elementSize;
+    if(playerPosition["x"]<((canvaSize-elementSize)-1)){      //Se resta 1 para evitar error por decimales
+        playerPosition["x"]=playerPosition["x"]+elementSize;
+    }
+
     startGame();
     console.log(playerPosition);
 } 
@@ -161,7 +170,10 @@ function moveRight(){
 function moveDown(){
     console.log("Movement_Down");
 
-    playerPosition["y"]=playerPosition["y"]+elementSize;
+    if(playerPosition["y"]<(canvaSize)){
+        playerPosition["y"]=playerPosition["y"]+elementSize;
+    } 
+
     startGame();
     console.log(playerPosition);
 }
