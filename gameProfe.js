@@ -78,6 +78,10 @@ function startGame(){
                     playerPosition["y"]=posY;
                     console.log({playerPosition});
                 }
+            } else if (col=='I') {
+                giftPosition["x"]=posX;
+                giftPosition["y"]=posX;
+                console.log({giftPosition});
             }
         });
     });
@@ -207,6 +211,13 @@ function moveByKeys(event){
 /*Clase 9: Objeto playerPosition */
 
 const playerPosition = {
+    x:undefined,
+    y:undefined
+}
+
+/*Clase 12: Objeto regaloPosition */
+
+const giftPosition = {
     x:undefined,
     y:undefined
 }

@@ -49,7 +49,7 @@ function startGame(){
 
 //Dividir cada mapa en arrays bidimendionales
 
-    const map = maps[0];
+    const map = maps[nivel];
     const mapRows = map.trim().split("\n");
     console.log(mapRows);
     const mapRowsClean= mapRows.map(value=>value.trim());
@@ -76,6 +76,14 @@ function startGame(){
                 playerPosition["y"]=posY;
                 console.log({playerPosition});
             }
+
+            //Ubicar posición del regalo (Clase 12)
+
+            if (col=='I') {
+                regaloPosition["x"]=posX;
+                regaloPosition["y"]=posY;
+                console.log({regaloPosition});
+            }
         });
     });
     
@@ -93,10 +101,13 @@ function startGame(){
     renderizarJugador(playerPosition["x"],playerPosition["y"])
 };
 
+let nivel = 0;
+
 
 function reStartGame(){
     game.font = elementSize + "px Verdana";
-    const map = maps[0];
+
+    const map = maps[nivel];
     const mapRows = map.trim().split("\n");
     console.log(mapRows);
     const mapRowsClean= mapRows.map(value=>value.trim());
@@ -119,12 +130,34 @@ function reStartGame(){
                 playerPosition["y"]=posY;
                 console.log({playerPosition});
             }
+
+            //Ubicar posición del regalo (Clase 12)
+            if (col=='I') {
+                regaloPosition["x"]=posX;
+                regaloPosition["y"]=posY;
+                console.log({regaloPosition});
+            }
+            
+
         });
     });
 };
 
 function renderizarJugador(x,y) {    
     game.fillText(emojis['PLAYER'],x,y);
+}
+
+function cambiarNivel(){
+    nivel=nivel+1;
+}
+
+function ganador() {
+    
+    console.log("Ganó");
+    clearGame();
+    cambiarNivel();
+    reStartGame();
+    renderizarJugador(playerPosition["x"],playerPosition["y"]);
 }
 
 /*Clase 10: Crear f paara borrar lo renderizado*/
@@ -177,18 +210,32 @@ btnDown2.addEventListener("click", moveDown);
 
 function moveUp(){
     console.log("Movement_Up");
-
     clearGame();
     reStartGame();
 
 //Agregar condicional para evitar que jugador se salga del mapa
+
+    // Clase 12: Agregar condicional para determinar si el jugador ha alcanzado el regalo
 
     if(playerPosition["y"]>(elementSize+1)){    //agrega 1 para evitar error por decimales
         playerPosition["y"]=playerPosition["y"]-elementSize;
     } 
     renderizarJugador(playerPosition["x"],playerPosition["y"]);
     console.log(playerPosition);
+
+    const intPlayerPosX = parseInt(playerPosition["x"].toFixed());
+    const intPlayerPosY = parseInt(playerPosition["y"].toFixed());
+    const intRegaloPosX = parseInt(regaloPosition["x"].toFixed());
+    const intRegaloPosY = parseInt(regaloPosition["y"].toFixed());
+
+    if (intPlayerPosX == intRegaloPosX && intPlayerPosY == intRegaloPosY){
+        console.log(intPlayerPosY);
+        console.log(intRegaloPosY);
+        ganador();
+    } 
 }
+
+
 
 function moveLeft(){
     console.log("Movement_Left");
@@ -203,7 +250,17 @@ function moveLeft(){
 
     renderizarJugador(playerPosition["x"],playerPosition["y"]);
     console.log(playerPosition);
-     
+
+    const intPlayerPosX = parseInt(playerPosition["x"].toFixed());
+    const intPlayerPosY = parseInt(playerPosition["y"].toFixed());
+    const intRegaloPosX = parseInt(regaloPosition["x"].toFixed());
+    const intRegaloPosY = parseInt(regaloPosition["y"].toFixed());
+
+    if (intPlayerPosX == intRegaloPosX && intPlayerPosY == intRegaloPosY){
+        console.log(intPlayerPosY);
+        console.log(intRegaloPosY);
+        ganador();
+    } 
 }
 
 function moveRight(){
@@ -219,6 +276,18 @@ function moveRight(){
 
     renderizarJugador(playerPosition["x"],playerPosition["y"]);
     console.log(playerPosition);
+
+    const intPlayerPosX = parseInt(playerPosition["x"].toFixed());
+    const intPlayerPosY = parseInt(playerPosition["y"].toFixed());
+    const intRegaloPosX = parseInt(regaloPosition["x"].toFixed());
+    const intRegaloPosY = parseInt(regaloPosition["y"].toFixed());
+
+    if (intPlayerPosX == intRegaloPosX && intPlayerPosY == intRegaloPosY){
+        console.log(intPlayerPosY);
+        console.log(intRegaloPosY);
+        ganador();
+    } 
+
 } 
 
 function moveDown(){
@@ -235,6 +304,17 @@ function moveDown(){
 
     renderizarJugador(playerPosition["x"],playerPosition["y"]);
     console.log(playerPosition);
+
+    const intPlayerPosX = parseInt(playerPosition["x"].toFixed());
+    const intPlayerPosY = parseInt(playerPosition["y"].toFixed());
+    const intRegaloPosX = parseInt(regaloPosition["x"].toFixed());
+    const intRegaloPosY = parseInt(regaloPosition["y"].toFixed());
+
+    if (intPlayerPosX == intRegaloPosX && intPlayerPosY == intRegaloPosY){
+        console.log(intPlayerPosY);
+        console.log(intRegaloPosY);
+        ganador();
+    } 
 }
 
 /*Clase 8: Crear evento que escuche TECLAS de dirección*/
@@ -270,3 +350,10 @@ const playerPosition = {
     y:undefined
 }
 
+
+/*Clase 12: Objeto regaloPosition */
+
+const regaloPosition = {
+    x:undefined,
+    y:undefined
+}
