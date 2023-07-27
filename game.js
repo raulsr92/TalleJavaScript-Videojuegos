@@ -106,7 +106,6 @@ let nivel = 0;
 
 function reStartGame(){
     game.font = elementSize + "px Verdana";
-
     const map = maps[nivel];
     const mapRows = map.trim().split("\n");
     console.log(mapRows);
@@ -130,15 +129,12 @@ function reStartGame(){
                 playerPosition["y"]=posY;
                 console.log({playerPosition});
             }
-
             //Ubicar posición del regalo (Clase 12)
             if (col=='I') {
                 regaloPosition["x"]=posX;
                 regaloPosition["y"]=posY;
                 console.log({regaloPosition});
             }
-            
-
         });
     });
 };

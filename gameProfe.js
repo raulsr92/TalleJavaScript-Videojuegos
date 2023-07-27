@@ -43,12 +43,12 @@ function setCanvasSize(){
     startGame();
 }
 
+
 function startGame(){
 
     game.font = elementSize + "px Verdana";
 
 //Dividir cada mapa en arrays bidimendionales
-
     const map = maps[0];
     const mapRows = map.trim().split("\n");
     console.log(mapRows);
@@ -80,7 +80,7 @@ function startGame(){
                 }
             } else if (col=='I') {
                 giftPosition["x"]=posX;
-                giftPosition["y"]=posX;
+                giftPosition["y"]=posY;
                 console.log({giftPosition});
             }
         });
@@ -91,8 +91,24 @@ function startGame(){
 };
 
 
-function renderizarJugador(x,y) {    
+function renderizarJugador(x,y) {
+
+    //CREAR UNA VARIABLE POR CADA DISTINTA COLISIÓN (en eje X e Y)
+
+    const giftColisionX = playerPosition["x"] == giftPosition["x"];
+
+    const giftColisionY = playerPosition["y"] == giftPosition["y"];
+
+    const huboColisionConElRegalito = giftColisionX && giftColisionY;
+    console.log(huboColisionConElRegalito);
+
+
+    if (huboColisionConElRegalito) {
+        console.log("Subiste de nivel")
+    }
+
     game.fillText(emojis['PLAYER'],x,y);
+    
 }
 
 /*Clase 8: Crear evento que escuche botones de dirección*/
