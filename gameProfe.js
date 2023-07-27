@@ -95,9 +95,9 @@ function renderizarJugador(x,y) {
 
     //CREAR UNA VARIABLE POR CADA DISTINTA COLISIÓN (en eje X e Y)
 
-    const giftColisionX = playerPosition["x"] == giftPosition["x"];
+    const giftColisionX = Math.trunc(playerPosition["x"]) == Math.trunc(giftPosition["x"]);
 
-    const giftColisionY = playerPosition["y"] == giftPosition["y"];
+    const giftColisionY = Math.trunc(playerPosition["y"]) == Math.trunc(giftPosition["y"]);
 
     const huboColisionConElRegalito = giftColisionX && giftColisionY;
     console.log(huboColisionConElRegalito);
