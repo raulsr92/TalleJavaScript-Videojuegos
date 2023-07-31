@@ -186,6 +186,7 @@ function renderizarJugador(x,y) {
         }
 
     });
+    
 
     game.fillText(emojis['PLAYER'],x,y);
 }

@@ -85,16 +85,26 @@ function startGame(){
             }
 
             //Ubicar posición de las bombas (Clase 13)
-
             if (col=='X') {
-                const repetition = obstaculosPosition.find(element => element.x==posX && element.y==posY);
+                const repetition = obstaculosPosition.find(element => element.x==Math.trunc(posX) && element.y==Math.trunc(posY));
                 console.log(repetition);
 
                 if(!repetition){
-                    obstaculosPosition.push({x:posX, y:posY})
+                    obstaculosPosition.push({x:Math.trunc(posX), y:Math.trunc(posY)})
                 }
             };
 
+            // Eliminar del array de colisiones las bombas cuando se cambia de mapa
+
+            if(col=='-' || col=='I'|| col=='O'){
+                obstaculosPosition.forEach(element => 
+                    {
+                        if(element.x==Math.trunc(posX) && element.y==Math.trunc(posY)){
+                            obstaculosPosition.splice(obstaculosPosition.indexOf(element),1);
+                        }                  
+                    }                    
+                    );
+            }   
         });
     });
     
