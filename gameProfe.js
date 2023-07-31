@@ -83,6 +83,18 @@ function startGame(){
                 giftPosition["y"]=posY;
                 console.log({giftPosition});
             }
+
+            //Ubicar posición de las bombas (Clase 13)
+
+            if (col=='X') {
+                const repetition = obstaculosPosition.find(element => element.x==posX && element.y==posY);
+                console.log(repetition);
+
+                if(!repetition){
+                    obstaculosPosition.push({x:posX, y:posY})
+                }
+            };
+
         });
     });
     
@@ -106,6 +118,19 @@ function renderizarJugador(x,y) {
     if (huboColisionConElRegalito) {
         console.log("Subiste de nivel")
     }
+
+    // Clase 13: determinar colisiones (bombas)
+    
+    obstaculosPosition.forEach( element => {
+        const obstacleColisionX =  Math.trunc(playerPosition["x"]) == Math.trunc(element.x);
+        const obstacleColisionY =  Math.trunc(playerPosition["y"]) == Math.trunc(element.y);
+        const obstacleColision = obstacleColisionX && obstacleColisionY;
+
+        if(obstacleColision){
+            console.log("Explosión")
+        }
+
+    });
 
     game.fillText(emojis['PLAYER'],x,y);
     
@@ -238,3 +263,6 @@ const giftPosition = {
     y:undefined
 }
 
+/*Clase 13: Array con objetos */
+
+const obstaculosPosition=[];

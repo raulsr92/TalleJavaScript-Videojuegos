@@ -87,23 +87,28 @@ function startGame(){
             //Ubicar posición de las bombas (Clase 13)
 
             if (col=='X') {
-                obstaculosPosition.push({x:posX, y:posY})
-            }
+                const repetition = obstaculosPosition.find(element => element.x==Math.trunc(posX) && element.y==Math.trunc(posY));
+                console.log(repetition);
+
+                if(!repetition){
+                    obstaculosPosition.push({x:Math.trunc(posX), y:Math.trunc(posY)})
+                }
+            };
+            
+
+
         });
-    });
-    
-    /*
-    for (let j = 1; j <= 10 ; j++) {
-        for (let i = 0; i < 10; i++) {
+        /*
+        for (let j = 1; j <= 10 ; j++) {
+            for (let i = 0; i < 10; i++) {
             let emojiShow;
             emojiShow = mapRowsCols[j-1][i];
             game.fillText(emojis[emojiShow], (elementSize*i), elementSize*j)
-        }
-    } */
-
-
-    /*Clase 9: Renderizar al jugador*/
-    renderizarJugador(playerPosition["x"],playerPosition["y"])
+            }
+        } */
+        /*Clase 9: Renderizar al jugador*/
+        renderizarJugador(playerPosition["x"],playerPosition["y"])
+    });
 };
 
 let nivel = 0;
@@ -140,11 +145,30 @@ function reStartGame(){
                 regaloPosition["y"]=posY;
                 console.log({regaloPosition});
             }
-  
+            
+            //Ubicar posición de las bombas (Clase 13)
+
+            if (col=='X') {
+                const repetition = obstaculosPosition.find(element => element.x==Math.trunc(posX) && element.y==Math.trunc(posY));
+                console.log(repetition);
+
+                if(!repetition){
+                    obstaculosPosition.push({x:Math.trunc(posX), y:Math.trunc(posY)})
+                }
+            };
+
+            // Eliminar del array de colisiones las bombas cuando se cambia de mapa
+
+            if(col=='-' || col=='I'|| col=='O'){
+                obstaculosPosition.forEach(element => 
+                    {
+                        if(element.x==Math.trunc(posX) && element.y==Math.trunc(posY)){
+                            obstaculosPosition.splice(obstaculosPosition.indexOf(element),1);
+                        }                  
+                    }                    
+                    );
+            }            
         });
-
-
-
     });
 };
 
@@ -163,10 +187,7 @@ function renderizarJugador(x,y) {
 
     });
 
-
-
     game.fillText(emojis['PLAYER'],x,y);
-
 }
 
 function cambiarNivel(){
