@@ -10,6 +10,8 @@ console.log(game);
 
 let canvaSize;
 let elementSize;
+let level = 0;
+
 
 /*3°Crear evento y función que va a contener las propiedades y métodos del contexto 2D */
 
@@ -49,7 +51,13 @@ function startGame(){
     game.font = elementSize + "px Verdana";
 
 //Dividir cada mapa en arrays bidimendionales
-    const map = maps[0];
+    const map = maps[level];
+
+    if (!map) {
+        gameWin();
+        return;
+    }
+
     const mapRows = map.trim().split("\n");
     console.log(mapRows);
     const mapRowsClean= mapRows.map(value=>value.trim());
@@ -101,21 +109,30 @@ function startGame(){
     renderizarJugador(playerPosition["x"],playerPosition["y"])
 };
 
+function levelWin(){
+    console.log("Subiste de nivel");
+    level++;
+    startGame();
+}
+
+function gameWin(){
+    console.log("Terminaste el juego");
+}
 
 function renderizarJugador(x,y) {
 
     //CREAR UNA VARIABLE POR CADA DISTINTA COLISIÓN (en eje X e Y)
 
     const giftColisionX = Math.trunc(playerPosition["x"]) == Math.trunc(giftPosition["x"]);
-
     const giftColisionY = Math.trunc(playerPosition["y"]) == Math.trunc(giftPosition["y"]);
-
     const huboColisionConElRegalito = giftColisionX && giftColisionY;
     console.log(huboColisionConElRegalito);
 
 
     if (huboColisionConElRegalito) {
         console.log("Subiste de nivel")
+
+        levelWin();
     }
 
     // Clase 13: determinar colisiones (bombas)

@@ -196,12 +196,18 @@ function cambiarNivel(){
 }
 
 function ganador() {
-    
-    console.log("Ganó");
-    clearGame();
+
     cambiarNivel();
-    reStartGame();
-    renderizarJugador(playerPosition["x"],playerPosition["y"]);
+
+    if (nivel<maps.length) {
+        console.log("Ganó");
+        clearGame();
+        console.log(nivel);
+        reStartGame();
+        renderizarJugador(playerPosition["x"],playerPosition["y"]);
+    } else{
+        console.log("Ha superado todos los niveles!!!")
+    }
 }
 
 /*Clase 10: Crear f paara borrar lo renderizado*/
