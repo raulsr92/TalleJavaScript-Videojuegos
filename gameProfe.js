@@ -58,7 +58,13 @@ function startGame(){
     const mapRowsCols=mapRowsClean.map(value=>value.split(""));
     console.log(mapRowsCols);
 
+    //Limpiar canvas
+
     game.clearRect(0,0,canvaSize,canvaSize);
+
+    //Limpiar array de obstáculos
+
+    obstaculosPosition=[];
 
     // Uso de método de arrays: arrays.forEach()
     mapRowsCols.forEach((row, rowIndex) => {
@@ -82,28 +88,11 @@ function startGame(){
                 giftPosition["x"]=posX;
                 giftPosition["y"]=posY;
                 console.log({giftPosition});
-            }
-
-            //Ubicar posición de las bombas (Clase 13)
-            if (col=='X') {
-                const repetition = obstaculosPosition.find(element => element.x==Math.trunc(posX) && element.y==Math.trunc(posY));
-                console.log(repetition);
-
-                if(!repetition){
-                    obstaculosPosition.push({x:Math.trunc(posX), y:Math.trunc(posY)})
-                }
-            };
-
-            // Eliminar del array de colisiones las bombas cuando se cambia de mapa
-
-            if(col=='-' || col=='I'|| col=='O'){
-                obstaculosPosition.forEach(element => 
-                    {
-                        if(element.x==Math.trunc(posX) && element.y==Math.trunc(posY)){
-                            obstaculosPosition.splice(obstaculosPosition.indexOf(element),1);
-                        }                  
-                    }                    
-                    );
+            } else if (col=='X'){      //Ubicar posición de las bombas (Clase 13)
+                obstaculosPosition.push({
+                    x:Math.trunc(posX), 
+                    y:Math.trunc(posY)
+                })
             }   
         });
     });
@@ -130,21 +119,27 @@ function renderizarJugador(x,y) {
     }
 
     // Clase 13: determinar colisiones (bombas)
-    
-    obstaculosPosition.forEach( element => {
-        const obstacleColisionX =  Math.trunc(playerPosition["x"]) == Math.trunc(element.x);
-        const obstacleColisionY =  Math.trunc(playerPosition["y"]) == Math.trunc(element.y);
-        const obstacleColision = obstacleColisionX && obstacleColisionY;
 
-        if(obstacleColision){
-            console.log("Explosión")
-        }
+    const enemyCollision = obstaculosPosition.find(enemy => {
+        const enemyColisionX = Math.trunc(enemy.x) == Math.trunc(playerPosition["x"]);
+        console.log(enemyColisionX);
+        const enemyColisionY = Math.trunc(enemy.y) == Math.trunc(playerPosition["y"]);
+        console.log(enemyColisionY);
 
+        return enemyColisionX && enemyColisionY;
     });
 
+    console.log(enemyCollision);
+
+
+    if (enemyCollision) {
+        console.log("Chocaste contra una bomba")
+    }
+    
     game.fillText(emojis['PLAYER'],x,y);
     
 }
+
 
 /*Clase 8: Crear evento que escuche botones de dirección*/
 
@@ -275,4 +270,4 @@ const giftPosition = {
 
 /*Clase 13: Array con objetos */
 
-const obstaculosPosition=[];
+let obstaculosPosition=[];
