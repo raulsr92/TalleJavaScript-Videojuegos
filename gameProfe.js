@@ -115,6 +115,10 @@ function levelWin(){
     startGame();
 }
 
+function levelFail() {
+    console.log("Chocaste contra una bomba");
+}
+
 function gameWin(){
     console.log("Terminaste el juego");
 }
@@ -131,7 +135,6 @@ function renderizarJugador(x,y) {
 
     if (huboColisionConElRegalito) {
         console.log("Subiste de nivel")
-
         levelWin();
     }
 
@@ -150,7 +153,7 @@ function renderizarJugador(x,y) {
 
 
     if (enemyCollision) {
-        console.log("Chocaste contra una bomba")
+        levelFail();
     }
     
     game.fillText(emojis['PLAYER'],x,y);
