@@ -117,6 +117,10 @@ function levelWin(){
 
 function levelFail() {
     console.log("Chocaste contra una bomba");
+    playerPosition["x"]=undefined;
+    playerPosition["y"]=undefined;
+
+    startGame();
 }
 
 function gameWin(){
@@ -124,6 +128,7 @@ function gameWin(){
 }
 
 function renderizarJugador(x,y) {
+    game.fillText(emojis['PLAYER'],x,y);
 
     //CREAR UNA VARIABLE POR CADA DISTINTA COLISIÓN (en eje X e Y)
 
@@ -156,7 +161,6 @@ function renderizarJugador(x,y) {
         levelFail();
     }
     
-    game.fillText(emojis['PLAYER'],x,y);
     
 }
 
