@@ -10,6 +10,9 @@ console.log(game);
 
 let canvaSize;
 let elementSize;
+let nivel = 0;
+let lives = 3;
+
 
 /*3°Crear evento y función que va a contener las propiedades y métodos del contexto 2D */
 
@@ -58,6 +61,10 @@ function startGame(){
     const mapRowsCols=mapRowsClean.map(value=>value.split(""));
     console.log(mapRowsCols);
 
+    //Contador_de_vidas
+
+    lifesCounter(lives);
+
     // Uso de método de arrays: arrays.forEach()
 
     mapRowsCols.forEach((row, rowIndex) => {
@@ -93,9 +100,6 @@ function startGame(){
             console.log(playerPosition);
             renderizarJugador(playerPosition["x"],playerPosition["y"])
 };
-
-let nivel = 0;
-
 
 function reStartGame(){
     game.font = elementSize + "px Verdana";
@@ -193,11 +197,20 @@ function ganador() {
 }
 
 function perdedor() {
+
+    lives=lives-1;
+    
     console.log("Perdió!, repite nivel");
     clearGame();
-    startGame();
+    startGame(); //Aquí se dibujan los corazones
     console.log(playerPosition);
+
+    if(lives==0){
+        gameOver.classList.remove("inactive")
+    }
 }
+
+
 
 /*Clase 10: Crear f paara borrar lo renderizado*/
 
@@ -401,3 +414,33 @@ const regaloPosition = {
 /*Clase 13: Array con objetos */
 
 const obstaculosPosition=[];
+
+/*Clase 15: Contador de vidas */
+
+const lifes = document.querySelector(".life--counter");
+const gameOver = document.querySelector(".game--over--message")
+
+console.log(lifes);
+
+
+
+function lifesCounter(vidas){   
+    switch (vidas) {
+        case 3:
+            lifes.innerHTML=emojis['L'] +" "+ emojis['L']+" "+ emojis['L'];
+            break;
+
+        case 2:
+            lifes.innerHTML=emojis['L'] +" "+ emojis['L'];
+            break;
+    
+        case 1:
+            lifes.innerHTML=emojis['L'] ;
+            break;   
+
+        case 0:
+            lifes.innerHTML="";
+            break;   
+    }
+}
+

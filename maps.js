@@ -12,7 +12,9 @@ const emojis = {
     'BOMB_COLLISION': '🔥',
     'GAME_OVER': '👎',
     'WIN': '🏆',
+    'L': '♥',
   };
+  
   
   const maps = [];
   

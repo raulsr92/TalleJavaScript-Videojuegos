@@ -17,6 +17,7 @@
     "buttons ."
     ;
     row-gap: 15px;
+    position: relative;
 }
 
 canvas{
@@ -126,6 +127,26 @@ canvas{
     text-shadow: 2px 2px 3px #EEB014;
 }
 
+/*Clase 15: Contador de vidas */
+
+.life--counter{
+    color: red;
+    font-size: 30px;
+    text-shadow: 1px 3px 1px rgb(94, 7, 7);
+}
+
+.game--over--message{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    object-fit: cover;
+}
+
+.inactive{
+    display: none;
+}
+
 /*Medias queries*/
 
 @media screen and (max-width: 500px){
@@ -177,3 +198,4 @@ canvas{
         font-size: 26px;
     }
 }
+

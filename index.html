@@ -11,6 +11,8 @@
 <body>
     <div class="game-container">
         <canvas id="game"> </canvas>
+        
+        <img class="game--over--message inactive" src="./assets/game-over.png" alt="game--over">
 
         <div class="btns">
             <button class="button-big btn--up" id="up">Arriba <i class="fa-solid fa-caret-up"></i></i></button>
@@ -28,7 +30,7 @@
         </div>
 
         <div class="messages">
-            <p class="life">Vidas: <i class="fa-solid fa-heart" style="color: #c51616;"></i></p>
+            <p class="life">Vidas: <span class="life--counter"> </span> </p>
             <p class="timer">Tiempo: <i class="fa-solid fa-stopwatch" style="color: #423E4F;"></i></p>
             <p class="record">Record: <i class="fa-solid fa-flag-checkered" style="color: black;"></i></p>
 
@@ -37,6 +39,6 @@
     </div>
 
     <script src="./maps.js"></script>
-    <script src="./gameProfe.js"></script>
+    <script src="./game.js"></script>
 </body>
 </html>
