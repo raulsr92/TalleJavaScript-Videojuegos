@@ -96,10 +96,16 @@ function startGame(){
             };
         });
     });
-            /*Clase 9: Renderizar al jugador*/
-            console.log(playerPosition);
-            renderizarJugador(playerPosition["x"],playerPosition["y"])
+    /*Clase 9: Renderizar al jugador*/
+    console.log(playerPosition);  
+    renderizarJugador(playerPosition["x"],playerPosition["y"])
+
+    /*Clase 15: Renderizar al fuego*/
+
+    firePosition.forEach( fire => game.fillText(emojis['BOMB_COLLISION'],fire.x,fire.y))
+
 };
+
 
 function reStartGame(){
     game.font = elementSize + "px Verdana";
@@ -157,6 +163,10 @@ function reStartGame(){
             }            
         });
     });
+
+        /*Clase 15: Renderizar al fuego*/
+
+        firePosition.forEach( fire => game.fillText(emojis['BOMB_COLLISION'],fire.x,fire.y))
 };
 
 function renderizarJugador(x,y) {   
@@ -172,9 +182,18 @@ function renderizarJugador(x,y) {
 
         if(obstacleColision){
             console.log("Explosión")
+
+            // Agregar objetos (posiciones de fuego) al array firePosition
+
+            firePosition.push({x:Math.trunc(element.x),y:Math.trunc(element.y)})
+
             perdedor();
         }
     });
+}
+
+function renderizarFire(x,y) {
+    game.fillText(emojis['BOMB_COLLISION'],x,y)
 }
 
 function cambiarNivel(){
@@ -185,6 +204,8 @@ function ganador() {
 
     cambiarNivel();
 
+    firePosition=[];
+
     if (nivel<maps.length) {
         console.log("Ganó");
         clearGame();
@@ -193,6 +214,7 @@ function ganador() {
         renderizarJugador(playerPosition["x"],playerPosition["y"]);
     } else{
         console.log("Ha superado todos los niveles!!!")
+        winner.classList.remove("inactive")
     }
 }
 
@@ -203,6 +225,7 @@ function perdedor() {
     console.log("Perdió!, repite nivel");
     clearGame();
     startGame(); //Aquí se dibujan los corazones
+
     console.log(playerPosition);
 
     if(lives==0){
@@ -314,6 +337,7 @@ function moveLeft(){
 
     renderizarJugador(playerPosition["x"],playerPosition["y"]);
     console.log(playerPosition);
+    
 }
 
 function moveRight(){
@@ -419,6 +443,8 @@ const obstaculosPosition=[];
 
 const lifes = document.querySelector(".life--counter");
 const gameOver = document.querySelector(".game--over--message")
+const winner = document.querySelector(".winner--message")
+
 
 console.log(lifes);
 
@@ -443,4 +469,9 @@ function lifesCounter(vidas){
             break;   
     }
 }
+
+
+/*Clase 15: Objeto firePosition */
+
+let firePosition= [];
 

@@ -135,12 +135,13 @@ canvas{
     text-shadow: 1px 3px 1px rgb(94, 7, 7);
 }
 
-.game--over--message{
+.game--over--message, .winner--message{
     position: absolute;
     top: 10%;
     left: 10%;
     width: 80%;
     object-fit: cover;
+    border-radius: 50%;
 }
 
 .inactive{
