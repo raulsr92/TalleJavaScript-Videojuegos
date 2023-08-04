@@ -11,7 +11,7 @@ console.log(game);
 let canvaSize;
 let elementSize;
 let level = 0;
-
+let lives = 3;
 
 /*3°Crear evento y función que va a contener las propiedades y métodos del contexto 2D */
 

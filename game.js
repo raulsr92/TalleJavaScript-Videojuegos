@@ -94,6 +94,18 @@ function startGame(){
                     obstaculosPosition.push({x:Math.trunc(posX), y:Math.trunc(posY)})
                 }
             };
+
+            // Eliminar del array de colisiones las bombas cuando se cambia de mapa
+
+            if(col=='-' || col=='I'|| col=='O'){
+                obstaculosPosition.forEach(element => 
+                    {
+                        if(element.x==Math.trunc(posX) && element.y==Math.trunc(posY)){
+                            obstaculosPosition.splice(obstaculosPosition.indexOf(element),1);
+                        }                  
+                    }                    
+                    );
+            }  
         });
     });
     /*Clase 9: Renderizar al jugador*/
@@ -218,23 +230,24 @@ function ganador() {
     }
 }
 
+
 function perdedor() {
-
-    lives=lives-1;
-    
-    console.log("Perdió!, repite nivel");
-    clearGame();
-    startGame(); //Aquí se dibujan los corazones
-
-    console.log(playerPosition);
-
+    lives=lives-1; //quita 1 vida
     if(lives==0){
-        gameOver.classList.remove("inactive")
+        console.log("Perdió el juego!, vuelve a nivel inicial");
+        nivel=0;
+        lives=3;
+        firePosition=[];
+        clearGame(); //limpia mapa
+        startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones
+        gameOver.classList.remove("inactive");
+    } else{
+        console.log("Perdió!, repite nivel");
+        clearGame(); //limpia mapa
+        startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones
+        console.log(playerPosition);
     }
 }
-
-
-
 /*Clase 10: Crear f paara borrar lo renderizado*/
 
 function clearGame() {
