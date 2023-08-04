@@ -112,12 +112,17 @@ canvas{
 
 .life{
     grid-area: life;
+    align-self: center;
 }
 .timer{
     grid-area: timer;
+    align-self: center;
+
 }
 .record{
     grid-area: record;
+    align-self: center;
+
 }
 
 .messages p{
@@ -133,6 +138,12 @@ canvas{
     color: red;
     font-size: 30px;
     text-shadow: 1px 3px 1px rgb(94, 7, 7);
+    align-self: center;
+    justify-self: center;
+    background-color: #47FFFE;
+    border-radius: 10px;
+    width: 100px;
+    padding-left: 10px;
 }
 
 .game--over--message, .winner--message{
@@ -197,6 +208,11 @@ canvas{
 
     .fa-caret-left, .fa-caret-up, .fa-caret-down, .fa-caret-right{
         font-size: 26px;
+    }
+
+    .life--counter{
+        font-size: 20px;
+        text-shadow: 1px 3px 1px rgb(94, 7, 7);
     }
 }
 
