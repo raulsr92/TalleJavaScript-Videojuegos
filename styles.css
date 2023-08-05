@@ -9,7 +9,7 @@
 .game-container{
     height: 100%;
     width: 100%;
-    background-color: #B990F3;
+    background-color: #86198E;
     padding-top: 40px;
     padding-bottom: 40px;
     display: grid;
@@ -111,7 +111,6 @@ canvas{
     justify-self: start;
     border: 2px solid #37A769;
     border-radius: 10px;
-    background-color: #7CD6A3;
     
 }
 
@@ -131,12 +130,11 @@ canvas{
 }
 
 .messages p{
-    color: #F992B5;
+    color: #7CD6A3;
     font-weight: 700;
     text-transform: uppercase;
-    text-shadow: 2px 2px 3px #C35A7B;
     font-family: 'Roboto', sans-serif;
-    -webkit-text-stroke: 1px #C35A7B;
+    -webkit-text-stroke: 1px #62C788;
     font-size: 18px;
     word-spacing: 2px;
     letter-spacing: 2px;
@@ -146,16 +144,15 @@ canvas{
 /*Clase 15: Contador de vidas */
 
 .life--counter{
-    color: red;
+    color: #FCD3EC;
     font-size: 30px;
     text-shadow: -2px 1px 0px rgb(94, 7, 7);
     align-self: center;
     justify-self: center;
-    background-color: #D4E6F1;
     border-radius: 10px;
     width: 100px;
     padding: 5px 10px 5px 10px;
-    border: 2px solid #37A769;
+    border: 2px solid #C35A7B;
 }
 
 .game--over--message, .winner--message{
@@ -224,7 +221,7 @@ canvas{
 
     .life--counter{
         font-size: 20px;
-        text-shadow: 1px 3px 1px rgb(94, 7, 7);
+        text-shadow: 1px 3px 1px #C35A7B;
     }
 
     .game--over--message, .winner--message{
