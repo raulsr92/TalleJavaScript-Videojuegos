@@ -70,8 +70,8 @@ function startGame(){
     mapRowsCols.forEach((row, rowIndex) => {
         row.forEach((col, colIndex) => {
             console.log({row, rowIndex, col, colIndex});
-            const posX = elementSize*colIndex;
-            const posY = elementSize*(rowIndex+1);
+            const posX = Math.trunc(elementSize)*colIndex;
+            const posY = Math.trunc(elementSize)*(rowIndex+1);
             console.log({posX,posY})
             game.fillText(emojis[col],posX, posY)  //Renderizado del mapa del juego
             //Ubicar posición inicial del JUGADOR
@@ -88,10 +88,10 @@ function startGame(){
             }
             //Ubicar posición de las bombas (Clase 13)
             if (col=='X') {
-                const repetition = obstaculosPosition.find(element => element.x==Math.trunc(posX) && element.y==Math.trunc(posY));
+                const repetition = obstaculosPosition.find(element => Math.trunc(element.x)==Math.trunc(posX) && Math.trunc(element.y)==Math.trunc(posY));
                 console.log(repetition);
                 if(!repetition){
-                    obstaculosPosition.push({x:Math.trunc(posX), y:Math.trunc(posY)})
+                    obstaculosPosition.push({x:posX, y:posY})
                 }
             };
 
@@ -133,8 +133,8 @@ function reStartGame(){
     mapRowsCols.forEach((row, rowIndex) => {
         row.forEach((col, colIndex) => {
             console.log({row, rowIndex, col, colIndex});
-            const posX = elementSize*colIndex;
-            const posY = elementSize*(rowIndex+1);
+            const posX = Math.trunc(elementSize)*colIndex;
+            const posY = Math.trunc(elementSize)*(rowIndex+1);
             console.log({posX,posY})
 
             game.fillText(emojis[col],posX, posY)  //Renderizado del mapa del juego
@@ -154,11 +154,11 @@ function reStartGame(){
             //Ubicar posición de las bombas (Clase 13)
 
             if (col=='X') {
-                const repetition = obstaculosPosition.find(element => element.x==Math.trunc(posX) && element.y==Math.trunc(posY));
+                const repetition = obstaculosPosition.find(element => Math.trunc(element.x)==Math.trunc(posX) && Math.trunc(element.y)==Math.trunc(posY));
                 console.log(repetition);
 
                 if(!repetition){
-                    obstaculosPosition.push({x:Math.trunc(posX), y:Math.trunc(posY)})
+                    obstaculosPosition.push({x:posX, y:posY})
                 }
             };
 
@@ -305,14 +305,14 @@ function moveUp(){
 
     // Clase 12: Agregar condicional para determinar si el jugador ha alcanzado el regalo
 
-    if(playerPosition["y"]>(elementSize+1)){    //agrega 1 para evitar error por decimales
-        playerPosition["y"]=playerPosition["y"]-elementSize;
+    if(Math.trunc(playerPosition["y"])>Math.trunc((elementSize+1))){    //agrega 1 para evitar error por decimales
+        playerPosition["y"]=playerPosition["y"]-Math.trunc(elementSize);
     } 
 
-    const intPlayerPosX = parseInt(playerPosition["x"].toFixed());
-    const intPlayerPosY = parseInt(playerPosition["y"].toFixed());
-    const intRegaloPosX = parseInt(regaloPosition["x"].toFixed());
-    const intRegaloPosY = parseInt(regaloPosition["y"].toFixed());
+    const intPlayerPosX = Math.trunc(parseInt(playerPosition["x"]));
+    const intPlayerPosY = Math.trunc(parseInt(playerPosition["y"]));
+    const intRegaloPosX = Math.trunc(parseInt(regaloPosition["x"]));
+    const intRegaloPosY = Math.trunc(parseInt(regaloPosition["y"]));
 
     if (intPlayerPosX == intRegaloPosX && intPlayerPosY == intRegaloPosY){
         console.log(intPlayerPosY);
@@ -332,14 +332,14 @@ function moveLeft(){
 
 //Agregar condicional para evitar que jugador se salga del mapa
 
-    if(playerPosition["x"]>1){          //Se establece 1 para evitar error por decimales
-        playerPosition["x"]=playerPosition["x"]-elementSize;
+    if(Math.trunc(playerPosition["x"])>1){          //Se establece 1 para evitar error por decimales
+        playerPosition["x"]=playerPosition["x"]-Math.trunc(elementSize);
     }
 
-    const intPlayerPosX = parseInt(playerPosition["x"].toFixed());
-    const intPlayerPosY = parseInt(playerPosition["y"].toFixed());
-    const intRegaloPosX = parseInt(regaloPosition["x"].toFixed());
-    const intRegaloPosY = parseInt(regaloPosition["y"].toFixed());
+    const intPlayerPosX = Math.trunc(parseInt(playerPosition["x"]));
+    const intPlayerPosY = Math.trunc(parseInt(playerPosition["y"]));
+    const intRegaloPosX = Math.trunc(parseInt(regaloPosition["x"]));
+    const intRegaloPosY = Math.trunc(parseInt(regaloPosition["y"]));
 
     if (intPlayerPosX == intRegaloPosX && intPlayerPosY == intRegaloPosY){
         console.log(intPlayerPosY);
@@ -360,14 +360,14 @@ function moveRight(){
 
 //Agregar condicional para evitar que jugador se salga del mapa
 
-    if(playerPosition["x"]<((canvaSize-elementSize)-1)){      //Se resta 1 para evitar error por decimales
-        playerPosition["x"]=playerPosition["x"]+elementSize;
+    if(Math.trunc(playerPosition["x"])<Math.trunc(((canvaSize-elementSize)-1))){      //Se resta 1 para evitar error por decimales
+        playerPosition["x"]=playerPosition["x"]+Math.trunc(elementSize);
     }
 
-    const intPlayerPosX = parseInt(playerPosition["x"].toFixed());
-    const intPlayerPosY = parseInt(playerPosition["y"].toFixed());
-    const intRegaloPosX = parseInt(regaloPosition["x"].toFixed());
-    const intRegaloPosY = parseInt(regaloPosition["y"].toFixed());
+    const intPlayerPosX = Math.trunc(parseInt(playerPosition["x"]));
+    const intPlayerPosY = Math.trunc(parseInt(playerPosition["y"]));
+    const intRegaloPosX = Math.trunc(parseInt(regaloPosition["x"]));
+    const intRegaloPosY = Math.trunc(parseInt(regaloPosition["y"]));
 
     if (intPlayerPosX == intRegaloPosX && intPlayerPosY == intRegaloPosY){
         console.log(intPlayerPosY);
@@ -388,14 +388,14 @@ function moveDown(){
 
 //Agregar condicional para evitar que jugador se salga del mapa
     
-    if(playerPosition["y"]<(canvaSize)){
-        playerPosition["y"]=playerPosition["y"]+elementSize;
+    if(Math.trunc(playerPosition["y"])<(Math.trunc(canvaSize))){
+        playerPosition["y"]=playerPosition["y"]+Math.trunc(elementSize);
     } 
 
-    const intPlayerPosX = parseInt(playerPosition["x"].toFixed());
-    const intPlayerPosY = parseInt(playerPosition["y"].toFixed());
-    const intRegaloPosX = parseInt(regaloPosition["x"].toFixed());
-    const intRegaloPosY = parseInt(regaloPosition["y"].toFixed());
+    const intPlayerPosX = Math.trunc(parseInt(playerPosition["x"]));
+    const intPlayerPosY = Math.trunc(parseInt(playerPosition["y"]));
+    const intRegaloPosX = Math.trunc(parseInt(regaloPosition["x"]));
+    const intRegaloPosY = Math.trunc(parseInt(regaloPosition["y"]));
 
     if (intPlayerPosX == intRegaloPosX && intPlayerPosY == intRegaloPosY){
         console.log(intPlayerPosY);
