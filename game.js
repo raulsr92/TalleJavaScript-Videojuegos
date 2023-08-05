@@ -25,9 +25,9 @@ function setCanvasSize(){
     //Establecer el tamaño de un elemento del canvas(10x10)
 
     if(window.innerHeight > window.innerWidth){
-        canvaSize = window.innerWidth *0.7;
+        canvaSize = window.innerWidth *0.8;
     } else{
-        canvaSize= window.innerHeight * 0.7
+        canvaSize= window.innerHeight * 0.9
     }
 
     canvas.setAttribute("height", canvaSize);

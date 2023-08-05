@@ -4,6 +4,8 @@
     box-sizing: border-box;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap');
+
 .game-container{
     height: 100%;
     width: 100%;
@@ -17,7 +19,7 @@
     "buttons ."
     ;
     row-gap: 15px;
-    position: relative;
+    position: fixed;
 }
 
 canvas{
@@ -66,12 +68,12 @@ canvas{
 .btns button{
     width: 80%;
     min-width: 50%;
-    height: 80%;
+    height: 100%;
     background-color: #D03ED3;
     color: #FFE1FF;
     font-weight: 700;
     border-radius: 5px;
-    border: 2px solid #FFE1FF;
+    border: 2px solid #F1C40F;
     cursor: pointer;
     box-shadow: 2px 2px 3px 2px #D03ED3;
 
@@ -96,17 +98,20 @@ canvas{
 .messages{
     display: grid;
     grid-template-columns: repeat(2, minmax(60px, 140px));
-    grid-template-rows: repeat(3, 40px);
+    grid-template-rows: repeat(3, 30px);
     grid-template-areas: 
     "life ."
     "timer ."
     "record ."
     ;
-    padding-bottom: 60px;
+    padding: 10px 20px 20px 20px;
     justify-self: center;
     grid-area: info;
     align-self:center;
     justify-self: start;
+    border: 2px solid #37A769;
+    border-radius: 10px;
+    background-color: #7CD6A3;
     
 }
 
@@ -126,10 +131,16 @@ canvas{
 }
 
 .messages p{
-    color: #FFFD5F;
+    color: #F992B5;
     font-weight: 700;
     text-transform: uppercase;
-    text-shadow: 2px 2px 3px #EEB014;
+    text-shadow: 2px 2px 3px #C35A7B;
+    font-family: 'Roboto', sans-serif;
+    -webkit-text-stroke: 1px #C35A7B;
+    font-size: 18px;
+    word-spacing: 2px;
+    letter-spacing: 2px;
+
 }
 
 /*Clase 15: Contador de vidas */
@@ -137,20 +148,21 @@ canvas{
 .life--counter{
     color: red;
     font-size: 30px;
-    text-shadow: 1px 3px 1px rgb(94, 7, 7);
+    text-shadow: -2px 1px 0px rgb(94, 7, 7);
     align-self: center;
     justify-self: center;
-    background-color: #47FFFE;
+    background-color: #D4E6F1;
     border-radius: 10px;
     width: 100px;
-    padding-left: 10px;
+    padding: 5px 10px 5px 10px;
+    border: 2px solid #37A769;
 }
 
 .game--over--message, .winner--message{
     position: absolute;
     top: 10%;
     left: 10%;
-    width: 80%;
+    width: 50%;
     object-fit: cover;
     border-radius: 50%;
 }
@@ -213,6 +225,14 @@ canvas{
     .life--counter{
         font-size: 20px;
         text-shadow: 1px 3px 1px rgb(94, 7, 7);
+    }
+
+    .game--over--message, .winner--message{
+        width: 80%;
+    }
+    .arrow-small{
+        color: #F1C40F;
+        font-size: 40px;
     }
 }
 
