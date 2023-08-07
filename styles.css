@@ -97,14 +97,14 @@ canvas{
 
 .messages{
     display: grid;
-    grid-template-columns: repeat(2, minmax(60px, 140px));
+    grid-template-columns: 130px 120px;
     grid-template-rows: repeat(3, 30px);
     grid-template-areas: 
-    "life ."
+    "life life--counter"
     "timer ."
     "record ."
     ;
-    padding: 10px 20px 20px 20px;
+    padding: 10px 20px 10px 20px;
     justify-self: center;
     grid-area: info;
     align-self:center;
@@ -150,9 +150,9 @@ canvas{
     align-self: center;
     justify-self: center;
     border-radius: 10px;
-    width: 100px;
-    padding: 5px 10px 5px 10px;
-    border: 2px solid #C35A7B;
+    width: 120px;
+    padding: 1px 10px 1px 10px;
+    border: 1px solid #C35A7B;
 }
 
 .game--over--message, .winner--message{
