@@ -459,10 +459,7 @@ const lifes = document.querySelector(".life--counter");
 const gameOver = document.querySelector(".game--over--message")
 const winner = document.querySelector(".winner--message")
 
-
 console.log(lifes);
-
-
 
 function lifesCounter(vidas){   
     switch (vidas) {

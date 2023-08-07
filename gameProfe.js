@@ -3,6 +3,11 @@
 const canvas = document.querySelector("#game");
 console.log(canvas);
 
+/*Clase 16: Sistema de vidas y corazones */
+
+const lifes = document.querySelector(".life--counter");
+
+
 /* 2° Crear el contexto de Canvas */
 
 const game = canvas.getContext("2d");
@@ -57,6 +62,8 @@ function startGame(){
         gameWin();
         return;
     }
+
+    showLives();
 
     const mapRows = map.trim().split("\n");
     console.log(mapRows);
@@ -131,6 +138,27 @@ function levelFail() {
 
 function gameWin(){
     console.log("Terminaste el juego");
+}
+
+function showLives(){
+
+    //Crear un array utilizando el constructor Array() e indicando su longitud
+    const livesArrays = Array(lives);
+    console.log(livesArrays.length);
+
+    // Poblar el array con el valor del emoji de corazón
+    livesArrays.fill(emojis['L']);
+    console.log(livesArrays);
+
+    //forma 1 
+    /* 
+    lifes.innerHTML=livesArrays.join(" ");  */
+
+    //forma 2
+
+    lifes.innerHTML=""; 
+    livesArrays.forEach(heart => lifes.append(heart + " "));
+    
 }
 
 function renderizarJugador(x,y) {
