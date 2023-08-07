@@ -233,21 +233,22 @@ function ganador() {
 
 function perdedor() {
     lives=lives-1; //quita 1 vida
+    
     if(lives==0){
         console.log("Perdió el juego!, vuelve a nivel inicial");
         nivel=0;
         lives=3;
         firePosition=[];
-        clearGame(); //limpia mapa
-        startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones
         gameOver.classList.remove("inactive");
     } else{
         console.log("Perdió!, repite nivel");
-        clearGame(); //limpia mapa
-        startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones
         console.log(playerPosition);
     }
+
+    clearGame(); //limpia mapa
+    startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones
 }
+
 /*Clase 10: Crear f paara borrar lo renderizado*/
 
 function clearGame() {

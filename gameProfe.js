@@ -24,9 +24,9 @@ function setCanvasSize(){
     //Establecer el tamaño de un elemento del canvas(10x10)
 
     if(window.innerHeight > window.innerWidth){
-        canvaSize = window.innerWidth *0.7;
+        canvaSize = window.innerWidth *0.8;
     } else{
-        canvaSize= window.innerHeight * 0.7
+        canvaSize= window.innerHeight * 0.9;
     }
 
     canvas.setAttribute("height", canvaSize);
@@ -117,10 +117,16 @@ function levelWin(){
 
 function levelFail() {
     console.log("Chocaste contra una bomba");
+    lives--;
+
+    if (lives<=0) {
+        level=0;
+        lives=3;
+    } 
+
     playerPosition["x"]=undefined;
     playerPosition["y"]=undefined;
-
-    startGame();
+    startGame();        
 }
 
 function gameWin(){
@@ -156,12 +162,9 @@ function renderizarJugador(x,y) {
 
     console.log(enemyCollision);
 
-
     if (enemyCollision) {
         levelFail();
     }
-    
-    
 }
 
 
