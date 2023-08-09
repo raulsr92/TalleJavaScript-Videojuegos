@@ -12,6 +12,13 @@ let canvaSize;
 let elementSize;
 let nivel = 0;
 let lives = 3;
+let timeStart;
+
+let timeFinal;
+
+let timeFinalSeconds;
+
+
 
 
 /*3°Crear evento y función que va a contener las propiedades y métodos del contexto 2D */
@@ -64,6 +71,15 @@ function startGame(){
     //Contador_de_vidas
 
     lifesCounter(lives);
+
+    //Clase N°517: Establecer tiempo inicial
+
+    if (!timeStart) {
+
+        timeStart = Date.now();
+
+    }
+
 
     // Uso de método de arrays: arrays.forEach()
 
@@ -227,6 +243,7 @@ function ganador() {
     } else{
         console.log("Ha superado todos los niveles!!!")
         winner.classList.remove("inactive")
+        showTime();
     }
 }
 
@@ -247,6 +264,24 @@ function perdedor() {
 
     clearGame(); //limpia mapa
     startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones
+}
+
+function showTime() {
+
+    timeFinal = Date.now()-timeStart;
+
+    console.log(timeFinal);
+
+    // Tranformar a milisegundos
+
+    timeFinalSeconds = (timeFinal/1000).toFixed(2);
+
+    console.log(timeFinalSeconds);
+
+    //Imprimir_tiempo
+
+    timer.innerHTML= (timeFinalSeconds);
+
 }
 
 /*Clase 10: Crear f paara borrar lo renderizado*/
@@ -458,6 +493,10 @@ const obstaculosPosition=[];
 const lifes = document.querySelector(".life--counter");
 const gameOver = document.querySelector(".game--over--message")
 const winner = document.querySelector(".winner--message")
+
+/*Clase 17: Sistema de tiempo y puntajes*/
+
+const timer = document.querySelector(".time--counter");
 
 console.log(lifes);
 

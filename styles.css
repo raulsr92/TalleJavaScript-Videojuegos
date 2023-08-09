@@ -97,11 +97,11 @@ canvas{
 
 .messages{
     display: grid;
-    grid-template-columns: 130px 120px;
+    grid-template-columns: 130px 140px;
     grid-template-rows: repeat(3, 30px);
     grid-template-areas: 
     "life life--counter"
-    "timer ."
+    "timer time--counting"
     "record ."
     ;
     padding: 10px 20px 10px 20px;
@@ -111,6 +111,12 @@ canvas{
     justify-self: start;
     border: 2px solid #37A769;
     border-radius: 10px;
+    box-shadow: 0px 1px 10px #3EF781;
+    background-color: #30061C;
+    width: auto;
+    justify-content: center;
+    column-gap: 10px;
+
     
 }
 
@@ -130,11 +136,12 @@ canvas{
 }
 
 .messages p{
-    color: #7CD6A3;
+    color: #C0FEED;
     font-weight: 700;
     text-transform: uppercase;
     font-family: 'Roboto', sans-serif;
-    -webkit-text-stroke: 1px #62C788;
+    /*-webkit-text-stroke: 1px #62C788;*/
+    text-shadow: 0px 1px 4px #3EF781;
     font-size: 18px;
     word-spacing: 2px;
     letter-spacing: 2px;
@@ -144,15 +151,17 @@ canvas{
 /*Clase 15: Contador de vidas */
 
 .life--counter{
-    color: #FCD3EC;
+    color: #FEBBD6;
     font-size: 30px;
     text-shadow: -2px 1px 0px rgb(94, 7, 7);
     align-self: center;
     justify-self: center;
     border-radius: 10px;
-    width: 120px;
+    width: 100%;
     padding: 1px 10px 1px 10px;
     border: 1px solid #C35A7B;
+    grid-area: life--counter;
+
 }
 
 .game--over--message, .winner--message{
@@ -167,6 +176,22 @@ canvas{
 .inactive{
     display: none;
 }
+
+/*Clase 17: Sistema de tiempo y puntajes */
+
+.time--counter{
+    grid-area: time--counting;
+    color: #A7FFFC;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    align-self: center;
+    padding-left: 10px;
+    text-shadow: 0px 1px 4px #269AE0;
+    -webkit-text-stroke: 0.3px #269AE0;
+}
+
+
 
 /*Medias queries*/
 
@@ -185,6 +210,7 @@ canvas{
 
     .messages{
         justify-self: center;
+
     }
 
 
