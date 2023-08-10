@@ -14,12 +14,27 @@ let nivel = 0;
 let lives = 3;
 let timeStart;
 
-let timeFinal;
-
-let timeFinalSeconds;
+let temporizador;
 
 
 
+function showTime() {
+
+    temporizador = setInterval(()=> timer.innerHTML = Math.trunc(((Date.now() - timeStart)/1000)), 1000);
+
+    /*timeFinal = Date.now()-timeStart;
+    console.log(timeFinal);
+    // Tranformar a milisegundos
+    timeFinalSeconds = (timeFinal/1000).toFixed(2);
+    console.log(timeFinalSeconds);
+    //Imprimir_tiempo
+    timer.innerHTML= (timeFinalSeconds);*/
+}
+
+
+/*let timeFinal;
+
+let timeFinalSeconds;*/
 
 /*3°Crear evento y función que va a contener las propiedades y métodos del contexto 2D */
 
@@ -51,6 +66,7 @@ function setCanvasSize(){
     console.log(elementSize);
     
     startGame();
+
 }
 
 function startGame(){
@@ -72,7 +88,7 @@ function startGame(){
 
     lifesCounter(lives);
 
-    //Clase N°517: Establecer tiempo inicial
+    //Clase N°17: Establecer tiempo inicial
 
     if (!timeStart) {
 
@@ -80,7 +96,11 @@ function startGame(){
 
     }
 
+    if (!temporizador) {
+        showTime();
+    }
 
+    
     // Uso de método de arrays: arrays.forEach()
 
     mapRowsCols.forEach((row, rowIndex) => {
@@ -197,10 +217,12 @@ function reStartGame(){
         firePosition.forEach( fire => game.fillText(emojis['BOMB_COLLISION'],fire.x,fire.y))
 };
 
-function renderizarJugador(x,y) {   
+function renderizarJugador(x,y) {  
+    
 
     // Clase 13: determinar colisiones (bombas)
     
+
     game.fillText(emojis['PLAYER'],x,y);
 
     obstaculosPosition.forEach( element => {
@@ -236,15 +258,20 @@ function ganador() {
 
     if (nivel<maps.length) {
         console.log("Ganó");
-        clearGame();
         console.log(nivel);
-        reStartGame();
-        renderizarJugador(playerPosition["x"],playerPosition["y"]);
     } else{
         console.log("Ha superado todos los niveles!!!")
         winner.classList.remove("inactive")
-        showTime();
+        nivel=0;
+        lives=3;
+        firePosition=[];
+
+        clearInterval(temporizador);
     }
+
+    clearGame();
+    startGame();
+
 }
 
 
@@ -266,23 +293,9 @@ function perdedor() {
     startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones
 }
 
-function showTime() {
 
-    timeFinal = Date.now()-timeStart;
 
-    console.log(timeFinal);
 
-    // Tranformar a milisegundos
-
-    timeFinalSeconds = (timeFinal/1000).toFixed(2);
-
-    console.log(timeFinalSeconds);
-
-    //Imprimir_tiempo
-
-    timer.innerHTML= (timeFinalSeconds);
-
-}
 
 /*Clase 10: Crear f paara borrar lo renderizado*/
 
@@ -519,7 +532,6 @@ function lifesCounter(vidas){
             break;   
     }
 }
-
 
 /*Clase 15: Objeto firePosition */
 

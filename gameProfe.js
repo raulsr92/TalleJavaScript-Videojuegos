@@ -7,6 +7,10 @@ console.log(canvas);
 
 const lifes = document.querySelector(".life--counter");
 
+/*Clase 17: Sistema de tiempo y puntajes*/
+
+const timer = document.querySelector(".time--counter");
+
 
 /* 2° Crear el contexto de Canvas */
 
@@ -17,6 +21,7 @@ let canvaSize;
 let elementSize;
 let level = 0;
 let lives = 3;
+let timeStart;
 
 /*3°Crear evento y función que va a contener las propiedades y métodos del contexto 2D */
 
@@ -64,6 +69,14 @@ function startGame(){
     }
 
     showLives();
+
+    //Clase N°17: Establecer tiempo inicial
+
+    if (!timeStart) {
+
+        timeStart = Date.now();
+
+    }
 
     const mapRows = map.trim().split("\n");
     console.log(mapRows);
@@ -158,6 +171,11 @@ function showLives(){
 
     lifes.innerHTML=""; 
     livesArrays.forEach(heart => lifes.append(heart + " "));
+    
+}
+
+function showTime() {
+    
     
 }
 
