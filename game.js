@@ -16,11 +16,21 @@ let timeStart;
 
 let temporizador;
 
+let timeMiliseconds;
+let timeSeconds;
+
+function tiempoTrasncurrido() {
+
+    timeMiliseconds =Date.now() - timeStart;
+    timeSeconds =(timeMiliseconds /1000).toFixed(2);
+    timer.innerHTML = timeSeconds ;
+}
 
 
 function showTime() {
 
-    temporizador = setInterval(()=> timer.innerHTML = Math.trunc(((Date.now() - timeStart)/1000)), 1000);
+    temporizador = setInterval(tiempoTrasncurrido, 10) ;
+
 
     /*timeFinal = Date.now()-timeStart;
     console.log(timeFinal);
@@ -156,6 +166,7 @@ function startGame(){
 
 
 function reStartGame(){
+
     game.font = elementSize + "px Verdana";
     const map = maps[nivel];
     const mapRows = map.trim().split("\n");
@@ -283,6 +294,9 @@ function perdedor() {
         nivel=0;
         lives=3;
         firePosition=[];
+
+        timeStart=null;
+
         gameOver.classList.remove("inactive");
     } else{
         console.log("Perdió!, repite nivel");
