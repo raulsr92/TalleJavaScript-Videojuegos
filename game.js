@@ -100,17 +100,14 @@ function startGame(){
 
     //Clase N°17: Establecer tiempo inicial
 
-    if (!timeStart) {
+    if (!timeStart) { //validación de que no exista timeStart
 
         timeStart = Date.now();
-
-    }
-
-    if (!temporizador) {
         showTime();
+
     }
 
-    
+       
     // Uso de método de arrays: arrays.forEach()
 
     mapRowsCols.forEach((row, rowIndex) => {

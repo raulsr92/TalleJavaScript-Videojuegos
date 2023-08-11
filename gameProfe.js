@@ -23,6 +23,9 @@ let level = 0;
 let lives = 3;
 let timeStart;
 
+let timePlayer;
+let timeInterval;
+
 /*3°Crear evento y función que va a contener las propiedades y métodos del contexto 2D */
 
 window.addEventListener("load", setCanvasSize);
@@ -72,9 +75,11 @@ function startGame(){
 
     //Clase N°17: Establecer tiempo inicial
 
-    if (!timeStart) {
+    if (!timeStart) { //validación de que no exista timeStart
 
         timeStart = Date.now();
+
+        timeInterval = setInterval(showTime,100)
 
     }
 
@@ -142,6 +147,8 @@ function levelFail() {
     if (lives<=0) {
         level=0;
         lives=3;
+        timeStart=null;
+
     } 
 
     playerPosition["x"]=undefined;
@@ -151,6 +158,7 @@ function levelFail() {
 
 function gameWin(){
     console.log("Terminaste el juego");
+    clearInterval(timeInterval);
 }
 
 function showLives(){
@@ -175,9 +183,9 @@ function showLives(){
 }
 
 function showTime() {
-    
-    
+    timer.innerHTML = Date.now() - timeStart;
 }
+
 
 function renderizarJugador(x,y) {
     game.fillText(emojis['PLAYER'],x,y);
