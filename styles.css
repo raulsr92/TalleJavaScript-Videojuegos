@@ -102,7 +102,7 @@ canvas{
     grid-template-areas: 
     "life life--counter"
     "timer time--counting"
-    "record ."
+    "record record--display"
     ;
     padding: 10px 20px 10px 20px;
     justify-self: center;
@@ -116,8 +116,6 @@ canvas{
     width: auto;
     justify-content: center;
     column-gap: 10px;
-
-    
 }
 
 .life{
@@ -179,7 +177,7 @@ canvas{
 
 /*Clase 17: Sistema de tiempo y puntajes */
 
-.time--counter{
+.time--counter, .record--display{
     grid-area: time--counting;
     color: #A7FFFC;
     font-size: 20px;
@@ -191,6 +189,15 @@ canvas{
     -webkit-text-stroke: 0.3px #269AE0;
 }
 
+/*Clase 18: ¿Qué es localStorage?-RETO */
+
+.record--display{
+    grid-area: record--display;
+    
+    color: #FFF4EF;
+    text-shadow: 0px 1px 4px #F03B00;
+    -webkit-text-stroke: 0.3px #F03B00;
+}
 
 
 /*Medias queries*/

@@ -19,6 +19,7 @@ let temporizador;
 let timeMiliseconds;
 let timeSeconds;
 
+
 function tiempoTrasncurrido() {
 
     timeMiliseconds =Date.now() - timeStart;
@@ -30,7 +31,6 @@ function tiempoTrasncurrido() {
 function showTime() {
 
     temporizador = setInterval(tiempoTrasncurrido, 10) ;
-
 
     /*timeFinal = Date.now()-timeStart;
     console.log(timeFinal);
@@ -101,12 +101,13 @@ function startGame(){
     //Clase N°17: Establecer tiempo inicial
 
     if (!timeStart) { //validación de que no exista timeStart
-
         timeStart = Date.now();
         showTime();
-
     }
 
+    //Clase N° 18: Mostrar record
+
+    recordDisplay.innerHTML= localStorage.getItem("record")
        
     // Uso de método de arrays: arrays.forEach()
 
@@ -275,6 +276,10 @@ function ganador() {
         firePosition=[];
 
         clearInterval(temporizador);
+
+        /* Aquí va LOCALSTORAGE*/
+
+        setRecord();
     }
 
     clearGame();
@@ -304,6 +309,21 @@ function perdedor() {
     startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones
 }
 
+
+function setRecord(){
+
+    if (localStorage.length==0) {
+        localStorage.setItem("record", timeSeconds);
+
+    } else{
+
+        if (parseFloat(timeSeconds) < parseFloat(localStorage.getItem("record"))){
+            localStorage.setItem("record", timeSeconds);
+            alert("Su nuevo record es: "+ timeSeconds)
+        }
+    }
+
+}
 
 
 
@@ -515,6 +535,9 @@ const obstaculosPosition=[];
 /*Clase 15: Contador de vidas */
 
 const lifes = document.querySelector(".life--counter");
+
+const recordDisplay = document.querySelector(".record--display");
+
 const gameOver = document.querySelector(".game--over--message")
 const winner = document.querySelector(".winner--message")
 
