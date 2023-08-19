@@ -310,6 +310,8 @@ function setRecord(){
     if (localStorage.length==0) {
         localStorage.setItem("record", timeSeconds);
 
+        victoryCard.classList.remove("inactive"); 
+
     } else{
 
         if (parseFloat(timeSeconds) < parseFloat(localStorage.getItem("record"))){
@@ -320,6 +322,8 @@ function setRecord(){
             newRecordPlace.innerHTML = timeSeconds;
 
             /*alert("Su nuevo record es: "+ timeSeconds)*/
+        } else{
+            victoryCard.classList.remove("inactive"); 
         }
     }
 
@@ -585,4 +589,19 @@ function playAgain() {
     newRecordCard.classList.add("inactive");
     timeStart=null;
     startGame();
+}
+
+/*Clase 18: Mejora: TARJETA DE VICTORIA SIN RÉCORD*/
+
+const victoryCard =document.querySelector(".win-without-record");
+
+const playAgainButton2 =document.querySelector("#record-play-again2");
+
+playAgainButton2.addEventListener("click", playAgain2);
+
+function playAgain2() {
+    victoryCard.classList.add("inactive");
+    timeStart=null;
+    startGame();
+
 }
