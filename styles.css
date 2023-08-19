@@ -65,7 +65,7 @@ canvas{
     grid-area: down;
 }
 
-.btns button{
+.button--standar{
     width: 80%;
     min-width: 50%;
     height: 100%;
@@ -171,9 +171,7 @@ canvas{
     border-radius: 50%;
 }
 
-.inactive{
-    display: none;
-}
+
 
 /*Clase 17: Sistema de tiempo y puntajes */
 
@@ -199,6 +197,60 @@ canvas{
     -webkit-text-stroke: 0.3px #F03B00;
 }
 
+/*Clase 18: Mejora N° 02*/
+
+.message--record{
+    width: 300px;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    /*background-color: #FEE3E2;*/
+    border: 2px solid #FEE3E2;
+    border-radius: 5px;
+    box-shadow: 0px 1px 10px #FEE3E2;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #FEE3E2;
+    font-weight: 700;
+    row-gap: 15px;
+    padding: 10px 10px 20px 10px;
+    position: absolute;
+    top: 40%;
+    left: calc(50% - 150px);
+    align-items: center;
+    background-image: url(./assets/7872299.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.message--record .button--standar{
+    padding: 10px 0;
+    font-size: 18px;
+    text-transform: uppercase;
+    background-color: #FEE3E2;
+    color:#E11116;
+    border: 2px solid #E11116;
+    box-shadow: 0px 0px 4px 5px #FEE3E2;
+    word-spacing: 3px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.fa-ranking-star{
+    font-size: 40px;
+}
+
+.new--record{
+    font-size: 25px;
+    text-shadow: 0px 0px 15px #E11116;
+}
+
+.inactive{
+    display: none;
+}
 
 /*Medias queries*/
 
