@@ -199,7 +199,7 @@ canvas{
 
 /*Clase 18: Mejora: TARJETA DE ALERT PARA NUEVO RECORD*/
 
-.message--record{
+.message--record, .win-without-record{
     width: 300px;
     height: auto;
     margin: 0 auto;
@@ -226,7 +226,7 @@ canvas{
     background-size: cover;
 }
 
-.message--record .button--standar{
+.message--record .button--standar, .win-without-record .button--standar{
     padding: 10px 0;
     font-size: 18px;
     text-transform: uppercase;
@@ -239,7 +239,7 @@ canvas{
     text-align: center;
 }
 
-.fa-ranking-star{
+.fa-ranking-star, .fa-trophy{
     font-size: 40px;
 }
 
@@ -251,6 +251,32 @@ canvas{
 .inactive{
     display: none;
 }
+
+/*Clase 18: Mejora: TARJETA DE GANADOR SIN NUEVO RECORD*/
+
+
+.win-without-record{
+    background-image: url(./assets/7872292.jpg);
+    border: 2px solid #D5F9E8;
+    box-shadow: 0px 1px 10px #D5F9E8;
+    padding: 20px 10px 20px 10px;
+}
+
+.win-without-record .button--standar{
+    background-color: #D5F9E8;
+    color:#17D22C;
+    border: 2px solid #17D22C;
+    box-shadow: 0px 0px 4px 5px #D5F9E8;
+}
+
+.win-without-record p{
+    color: #FEF2B6;
+}
+
+.fa-trophy{
+    color: #FEF2B6;
+}
+
 
 /*Medias queries*/
 

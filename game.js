@@ -269,7 +269,6 @@ function ganador() {
         console.log(nivel);
     } else{
         console.log("Ha superado todos los niveles!!!")
-        winner.classList.remove("inactive")
         nivel=0;
         lives=3;
         firePosition=[];
@@ -540,7 +539,6 @@ const lifes = document.querySelector(".life--counter");
 const recordDisplay = document.querySelector(".record--display");
 
 const gameOver = document.querySelector(".game--over--message")
-const winner = document.querySelector(".winner--message")
 
 
 
@@ -584,7 +582,6 @@ const playAgainButton1 =document.querySelector("#record-play-again");
 playAgainButton1.addEventListener("click", playAgain);
 
 function playAgain() {
-    winner.classList.add("inactive");
     newRecordCard.classList.add("inactive");
     timeStart=null;
     startGame();
