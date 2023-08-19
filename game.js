@@ -262,7 +262,6 @@ function cambiarNivel(){
 function ganador() {
 
     cambiarNivel();
-
     firePosition=[];
 
     if (nivel<maps.length) {
@@ -276,15 +275,12 @@ function ganador() {
         firePosition=[];
 
         clearInterval(temporizador);
-
         /* Aquí va LOCALSTORAGE*/
-
         setRecord();
     }
 
     clearGame();
     startGame();
-
 }
 
 
@@ -319,7 +315,12 @@ function setRecord(){
 
         if (parseFloat(timeSeconds) < parseFloat(localStorage.getItem("record"))){
             localStorage.setItem("record", timeSeconds);
-            alert("Su nuevo record es: "+ timeSeconds)
+
+            newRecordCard.classList.remove("inactive");
+
+            newRecordPlace.innerHTML = timeSeconds;
+
+            /*alert("Su nuevo record es: "+ timeSeconds)*/
         }
     }
 
@@ -541,6 +542,8 @@ const recordDisplay = document.querySelector(".record--display");
 const gameOver = document.querySelector(".game--over--message")
 const winner = document.querySelector(".winner--message")
 
+
+
 /*Clase 17: Sistema de tiempo y puntajes*/
 
 const timer = document.querySelector(".time--counter");
@@ -571,3 +574,18 @@ function lifesCounter(vidas){
 
 let firePosition= [];
 
+/*Clase 18: Mejora: TARJETA DE ALERT PARA NUEVO RECORD*/
+
+const newRecordCard =document.querySelector(".message--record");
+const newRecordPlace =document.querySelector(".new--record");
+
+const playAgainButton1 =document.querySelector("#record-play-again");
+
+playAgainButton1.addEventListener("click", playAgain);
+
+function playAgain() {
+    winner.classList.add("inactive");
+    newRecordCard.classList.add("inactive");
+    timeStart=null;
+    startGame();
+}
