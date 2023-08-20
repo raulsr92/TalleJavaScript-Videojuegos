@@ -199,7 +199,7 @@ canvas{
 
 /*Clase 18: Mejora: TARJETA DE ALERT PARA NUEVO RECORD*/
 
-.message--record, .win-without-record{
+.message--record, .win-without-record, .message--defeat{
     width: 300px;
     height: auto;
     margin: 0 auto;
@@ -226,7 +226,7 @@ canvas{
     background-size: cover;
 }
 
-.message--record .button--standar, .win-without-record .button--standar{
+.message--record .button--standar, .win-without-record .button--standar,.message--defeat .button--standar{
     padding: 10px 0;
     font-size: 18px;
     text-transform: uppercase;
@@ -239,7 +239,7 @@ canvas{
     text-align: center;
 }
 
-.fa-ranking-star, .fa-trophy{
+.fa-ranking-star, .fa-trophy,.fa-ghost{
     font-size: 40px;
 }
 
@@ -276,6 +276,9 @@ canvas{
 .fa-trophy{
     color: #FEF2B6;
 }
+
+/*Clase 18: Mejora: TARJETA DE PERDER-JUEGO*/
+
 
 
 /*Medias queries*/
