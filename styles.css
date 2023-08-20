@@ -245,7 +245,7 @@ canvas{
 
 .new--record{
     font-size: 25px;
-    text-shadow: 0px 0px 15px #E11116;
+    text-shadow: 0px 0px 15px #175AF8;
 }
 
 .inactive{
@@ -277,9 +277,22 @@ canvas{
     color: #FEF2B6;
 }
 
-/*Clase 18: Mejora: TARJETA DE PERDER-JUEGO*/
+/*Se  cambió el color rojo cuando se pierde y el azúl por nuevo récord*/
 
 
+.message--record{
+    background-image: url(./assets/4814407.jpg);
+    border: 2px solid #D5E2FE;
+    box-shadow: 0px 1px 10px #D5E2FE;
+    padding: 20px 10px 20px 10px;
+}
+
+.message--record .button--standar{
+    background-color: #D5E2FE;
+    color:#175AF8;
+    border: 2px solid #175AF8;
+    box-shadow: 0px 0px 4px 5px #D5E2FE;
+}
 
 /*Medias queries*/
 
