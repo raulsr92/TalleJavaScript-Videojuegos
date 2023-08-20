@@ -292,9 +292,7 @@ function perdedor() {
         lives=3;
         firePosition=[];
 
-        timeStart=null;
-
-        gameOver.classList.remove("inactive");
+        defeatCard.classList.remove("inactive");
     } else{
         console.log("Perdió!, repite nivel");
         console.log(playerPosition);
@@ -580,7 +578,6 @@ let firePosition= [];
 
 const newRecordCard =document.querySelector(".message--record");
 const newRecordPlace =document.querySelector(".new--record");
-
 const playAgainButton1 =document.querySelector("#record-play-again");
 
 playAgainButton1.addEventListener("click", playAgain);
@@ -594,14 +591,24 @@ function playAgain() {
 /*Clase 18: Mejora: TARJETA DE VICTORIA SIN RÉCORD*/
 
 const victoryCard =document.querySelector(".win-without-record");
-
 const playAgainButton2 =document.querySelector("#record-play-again2");
-
 playAgainButton2.addEventListener("click", playAgain2);
 
 function playAgain2() {
     victoryCard.classList.add("inactive");
     timeStart=null;
     startGame();
+}
 
+/*Clase 18: Mejora: TARJETA DE JUEGO PERDIDO*/
+
+const defeatCard =document.querySelector(".message--defeat");
+const playAgainButton3 =document.querySelector("#record-play-again3");
+
+playAgainButton3.addEventListener("click", playAgain3);
+
+function playAgain3() {
+    defeatCard.classList.add("inactive");
+    timeStart=null;
+    startGame();
 }
