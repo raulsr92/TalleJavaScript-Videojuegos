@@ -12,6 +12,11 @@ const lifes = document.querySelector(".life--counter");
 const timer = document.querySelector(".time--counter");
 
 
+/*Clase 19: Guardando records del jugador*/
+
+const record = document.querySelector(".record--display");
+
+
 /* 2° Crear el contexto de Canvas */
 
 const game = canvas.getContext("2d");
@@ -76,12 +81,11 @@ function startGame(){
     //Clase N°17: Establecer tiempo inicial
 
     if (!timeStart) { //validación de que no exista timeStart
-
         timeStart = Date.now();
-
         timeInterval = setInterval(showTime,100)
-
     }
+
+    showRecord();
 
     const mapRows = map.trim().split("\n");
     console.log(mapRows);
@@ -159,7 +163,27 @@ function levelFail() {
 function gameWin(){
     console.log("Terminaste el juego");
     clearInterval(timeInterval);
+
+    const recordTime = localStorage.getItem("record_time");
+    console.log(recordTime);
+    const playerTime = Date.now()-timeStart;
+
+    if (recordTime) {
+
+        if (recordTime > playerTime) {
+            localStorage.setItem("record_time",playerTime);
+            console.log("Superaste el récord")
+
+        } else{
+            console.log("No superaste el récord")
+        }
+    } else{
+        localStorage.setItem("record_time",playerTime);
+    }
+
+    console.log({recordTime,playerTime});
 }
+
 
 function showLives(){
 
@@ -184,6 +208,10 @@ function showLives(){
 
 function showTime() {
     timer.innerHTML = Date.now() - timeStart;
+}
+
+function showRecord() {
+    record.innerHTML = localStorage.getItem("record_time");
 }
 
 
