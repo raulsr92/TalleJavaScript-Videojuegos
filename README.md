@@ -13,5 +13,7 @@ El videojuego ha sido elaborado durante las sesiones del taller de [Platzi](http
 _________
 
 📌Prueba la [demo del juego 🎮](https://raulsr92.github.io/TalleJavaScript-Videojuegos/) ⭐⭐⭐⭐⭐
+
 📌Échale un vistazo al [repositorio de GitHub](https://github.com/raulsr92/TalleJavaScript-Videojuegos/)  
+
 📌Échale un vistazo al [Taller de Platzi](https://platzi.com/cursos/javascript-practico-videojuegos/)  
