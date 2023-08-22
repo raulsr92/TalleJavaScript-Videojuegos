@@ -1,3 +1,5 @@
+/* VARIABLES */
+
 /* 1° Capturar al elemento canvas de html*/
 
 const canvas = document.querySelector("#game");
@@ -19,38 +21,58 @@ let temporizador;
 let timeMiliseconds;
 let timeSeconds;
 
+/*Clase 8: Crear evento que escuche botones de dirección*/
 
-function tiempoTrasncurrido() {
+let btnUp, btnDown, btnRight, btnLeft;
+let btnUp2, btnDown2, btnRight2, btnLeft2;
 
-    timeMiliseconds =Date.now() - timeStart;
-    timeSeconds =(timeMiliseconds /1000).toFixed(2);
-    timer.innerHTML = timeSeconds ;
-}
+btnUp=document.querySelector(".btn--up");
+btnUp2=document.querySelector("#up-cel");
 
+btnLeft=document.querySelector(".btn--left");
+btnLeft2=document.querySelector("#left-cel");
 
-function showTime() {
+btnRight=document.querySelector(".btn--right");
+btnRight2=document.querySelector("#right-cel");
 
-    temporizador = setInterval(tiempoTrasncurrido, 10) ;
+btnDown=document.querySelector(".btn--down");
+btnDown2=document.querySelector("#down-cel");
 
-    /*timeFinal = Date.now()-timeStart;
-    console.log(timeFinal);
-    // Tranformar a milisegundos
-    timeFinalSeconds = (timeFinal/1000).toFixed(2);
-    console.log(timeFinalSeconds);
-    //Imprimir_tiempo
-    timer.innerHTML= (timeFinalSeconds);*/
-}
+/*Clase 15: Contador de vidas */
 
+const lifes = document.querySelector(".life--counter");
+const recordDisplay = document.querySelector(".record--display");
+const gameOver = document.querySelector(".game--over--message")
 
-/*let timeFinal;
+/*Clase 17: Sistema de tiempo y puntajes*/
 
-let timeFinalSeconds;*/
+const timer = document.querySelector(".time--counter");
+
+/* EVENTOS */
 
 /*3°Crear evento y función que va a contener las propiedades y métodos del contexto 2D */
 
 window.addEventListener("load", setCanvasSize);
 window.addEventListener("resize", setCanvasSize);
 
+
+btnUp.addEventListener("click", moveUp);
+btnUp2.addEventListener("click", moveUp);
+
+btnLeft.addEventListener("click", moveLeft);
+btnLeft2.addEventListener("click", moveLeft);
+
+btnRight.addEventListener("click", moveRight);
+btnRight2.addEventListener("click", moveRight);
+
+btnDown.addEventListener("click", moveDown);
+btnDown2.addEventListener("click", moveDown);
+
+/*Clase 8: Crear evento que escuche TECLAS de dirección*/
+
+window.addEventListener("keydown", moveByKeys);
+
+/* FUNCIONES */
 
 function setCanvasSize(){
     // Clase N° 03
@@ -162,7 +184,6 @@ function startGame(){
 
 };
 
-
 function reStartGame(){
 
     game.font = elementSize + "px Verdana";
@@ -228,10 +249,8 @@ function reStartGame(){
 
 function renderizarJugador(x,y) {  
     
-
     // Clase 13: determinar colisiones (bombas)
     
-
     game.fillText(emojis['PLAYER'],x,y);
 
     obstaculosPosition.forEach( element => {
@@ -282,7 +301,6 @@ function ganador() {
     startGame();
 }
 
-
 function perdedor() {
     lives=lives-1; //quita 1 vida
     
@@ -302,6 +320,25 @@ function perdedor() {
     startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones
 }
 
+function tiempoTrasncurrido() {
+
+    timeMiliseconds =Date.now() - timeStart;
+    timeSeconds =(timeMiliseconds /1000).toFixed(2);
+    timer.innerHTML = timeSeconds ;
+}
+
+function showTime() {
+
+    temporizador = setInterval(tiempoTrasncurrido, 10) ;
+
+    /*timeFinal = Date.now()-timeStart;
+    console.log(timeFinal);
+    // Tranformar a milisegundos
+    timeFinalSeconds = (timeFinal/1000).toFixed(2);
+    console.log(timeFinalSeconds);
+    //Imprimir_tiempo
+    timer.innerHTML= (timeFinalSeconds);*/
+}
 
 function setRecord(){
 
@@ -327,56 +364,11 @@ function setRecord(){
 
 }
 
-
-
-
-/*Clase 10: Crear f paara borrar lo renderizado*/
+/*Clase 10: Crear f para borrar lo renderizado*/
 
 function clearGame() {
     game.reset();   
 }
-
-/*Clase 8: Crear evento que escuche botones de dirección*/
-
-let btnUp, btnDown, btnRight, btnLeft;
-let btnUp2, btnDown2, btnRight2, btnLeft2;
-
-//paso N°01
-btnUp=document.querySelector(".btn--up");
-btnUp2=document.querySelector("#up-cel");
-console.log(btnUp);
-console.log(btnUp2);
-
-
-btnLeft=document.querySelector(".btn--left");
-btnLeft2=document.querySelector("#left-cel");
-console.log(btnLeft);
-console.log(btnLeft2);
-
-btnRight=document.querySelector(".btn--right");
-btnRight2=document.querySelector("#right-cel");
-console.log(btnRight);
-console.log(btnRight2);
-
-btnDown=document.querySelector(".btn--down");
-btnDown2=document.querySelector("#down-cel");
-console.log(btnDown);
-console.log(btnDown2);
-
-//paso N°02
-
-btnUp.addEventListener("click", moveUp);
-btnUp2.addEventListener("click", moveUp);
-
-btnLeft.addEventListener("click", moveLeft);
-btnLeft2.addEventListener("click", moveLeft);
-
-btnRight.addEventListener("click", moveRight);
-btnRight2.addEventListener("click", moveRight);
-
-btnDown.addEventListener("click", moveDown);
-btnDown2.addEventListener("click", moveDown);
-
 
 function moveUp(){
     console.log("Movement_Up");
@@ -490,10 +482,6 @@ function moveDown(){
     console.log(playerPosition);
 }
 
-/*Clase 8: Crear evento que escuche TECLAS de dirección*/
-
-window.addEventListener("keydown", moveByKeys);
-
 
 //función con su único parámetro: descriptor del evento
 
@@ -516,40 +504,6 @@ function moveByKeys(event){
     }
 }
 
-/*Clase 9: Objeto playerPosition */
-
-const playerPosition = {
-    x:undefined,
-    y:undefined
-}
-
-/*Clase 12: Objeto regaloPosition */
-
-const regaloPosition = {
-    x:undefined,
-    y:undefined
-}
-
-/*Clase 13: Array con objetos */
-
-const obstaculosPosition=[];
-
-/*Clase 15: Contador de vidas */
-
-const lifes = document.querySelector(".life--counter");
-
-const recordDisplay = document.querySelector(".record--display");
-
-const gameOver = document.querySelector(".game--over--message")
-
-
-
-/*Clase 17: Sistema de tiempo y puntajes*/
-
-const timer = document.querySelector(".time--counter");
-
-console.log(lifes);
-
 function lifesCounter(vidas){   
     switch (vidas) {
         case 3:
@@ -570,9 +524,33 @@ function lifesCounter(vidas){
     }
 }
 
+
+/* OBJETOS Y ARRAYS */
+
+/*Clase 9: Objeto playerPosition */
+
+const playerPosition = {
+    x:undefined,
+    y:undefined
+}
+
+/*Clase 12: Objeto regaloPosition */
+
+const regaloPosition = {
+    x:undefined,
+    y:undefined
+}
+
+/*Clase 13: Array con objetos */
+
+const obstaculosPosition=[];
+
 /*Clase 15: Objeto firePosition */
 
 let firePosition= [];
+
+
+
 
 /*Clase 18: Mejora: TARJETA DE ALERT PARA NUEVO RECORD*/
 
