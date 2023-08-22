@@ -248,12 +248,9 @@ canvas{
     text-shadow: 0px 0px 15px #175AF8;
 }
 
-.inactive{
-    display: none;
-}
+
 
 /*Clase 18: Mejora: TARJETA DE GANADOR SIN NUEVO RECORD*/
-
 
 .win-without-record{
     background-image: url(./assets/7872292.jpg);
@@ -293,6 +290,10 @@ canvas{
     border: 2px solid #175AF8;
     box-shadow: 0px 0px 4px 5px #D5E2FE;
 }
+
+
+
+
 
 /*Medias queries*/
 
@@ -358,5 +359,60 @@ canvas{
         color: #F1C40F;
         font-size: 40px;
     }
+
+
+    /*Clase 19: Mejora: MENSAJE_INICIAL*/
+    
+    .welcome--message{
+        width: 350px;
+        height: 75%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        /*background-color: #FEE3E2;*/
+        border: 3px solid #F8F7FC;
+        border-radius: 5px;
+        box-shadow: 0px 1px 30px #F8F7FC;
+        font-family: 'Roboto', sans-serif;
+        font-size: 35px;
+        color: #F8F7FC;
+        font-weight: 700;
+        row-gap: 65px;
+        padding: 40px 10px 50px 10px;
+        position: absolute;
+        top: 15%;
+        left: calc(50% - 175px);
+        align-items: center;
+        background-image: url(./assets/Inicio1.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        justify-content: center;
+    }
+
+    .fa-gamepad{
+        font-size: 60px;
+        color: #F8F7FC;
+    }
+
+    .welcome--message .button--standar{
+        width: 80%;
+        height: 10%;
+        padding: 10px 0;
+        font-size: 18px;
+        text-transform: uppercase;
+        background-color: #AAFEFC;
+        color:#51A1DC;
+        border: 3px solid #51A1DC;
+        box-shadow: 0px 0px 4px 5px white;
+        word-spacing: 3px;
+        letter-spacing: 2px;
+        text-align: center;
+    }
+
 }
 
+.inactive{
+    display: none;
+}

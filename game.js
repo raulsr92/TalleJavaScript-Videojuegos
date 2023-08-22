@@ -21,6 +21,7 @@ let temporizador;
 let timeMiliseconds;
 let timeSeconds;
 
+
 /*Clase 8: Crear evento que escuche botones de dirección*/
 
 let btnUp, btnDown, btnRight, btnLeft;
@@ -47,6 +48,7 @@ const gameOver = document.querySelector(".game--over--message")
 /*Clase 17: Sistema de tiempo y puntajes*/
 
 const timer = document.querySelector(".time--counter");
+
 
 /* EVENTOS */
 
@@ -97,6 +99,10 @@ function setCanvasSize(){
     elementSize=canvaSize/10;
     console.log(elementSize);
     
+
+    welcome();
+
+  
     startGame();
 
 }
@@ -174,6 +180,7 @@ function startGame(){
             }  
         });
     });
+
     /*Clase 9: Renderizar al jugador*/
     console.log(playerPosition);  
     renderizarJugador(playerPosition["x"],playerPosition["y"])
@@ -587,6 +594,23 @@ playAgainButton3.addEventListener("click", playAgain3);
 
 function playAgain3() {
     defeatCard.classList.add("inactive");
+    timeStart=null;
+    startGame();
+}
+
+/*Clase 19: Mejora: MENSAJE_INICIO*/
+
+const welcomeCard =document.querySelector(".welcome--message");
+const initialGame =document.querySelector("#initial-play");
+
+function welcome() {
+    welcomeCard.classList.remove("inactive");  
+}
+
+initialGame.addEventListener("click", initial);
+
+function initial() {
+    welcomeCard.classList.add("inactive");
     timeStart=null;
     startGame();
 }
