@@ -12,19 +12,24 @@
     background-color: #86198E;
     padding-top: 40px;
     padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
     grid-template-areas: 
-    "main info"
-    "buttons ."
+    "main main buttons"
+    "main main info"
     ;
     row-gap: 15px;
+    column-gap: 10px;
     position: fixed;
 }
 
 canvas{
-    border: 5px solid #47FFFE;
+    border: 5px solid #e11116;
     background-color: #FFF9A7;
+    box-shadow: 0px 1px 50px #D10C1C;
     border-radius: 5px;
     margin-bottom: 20px;
     margin-top: 10px;
@@ -34,9 +39,8 @@ canvas{
 
 .btns{
     display: grid;
-    margin-bottom: 50px;
     grid-template-columns: repeat(3, minmax(60px, 140px));
-    grid-template-rows: repeat(3, 40px);
+    grid-template-rows: repeat(3, 60px);
     grid-template-areas: 
     " . up ."
     "left . right"
@@ -46,7 +50,9 @@ canvas{
     align-items: center;
     margin: 0 auto 20px;
     grid-area: buttons;
-
+    align-self: center;
+    justify-self: start;
+    font-size: 18px;
 }
 
 #up{
@@ -70,7 +76,7 @@ canvas{
     min-width: 50%;
     height: 100%;
     background-color: #D03ED3;
-    color: #FFE1FF;
+    color: #FFFEF0;
     font-weight: 700;
     border-radius: 5px;
     border: 2px solid #F1C40F;
@@ -97,8 +103,8 @@ canvas{
 
 .messages{
     display: grid;
-    grid-template-columns: 130px 140px;
-    grid-template-rows: repeat(3, 30px);
+    grid-template-columns: 130px 150px;
+    grid-template-rows: repeat(3, 60px);
     grid-template-areas: 
     "life life--counter"
     "timer time--counting"
@@ -108,10 +114,9 @@ canvas{
     justify-self: center;
     grid-area: info;
     align-self:center;
-    justify-self: start;
-    border: 2px solid #37A769;
+    border: 6px solid #37A769;
     border-radius: 10px;
-    box-shadow: 0px 1px 10px #3EF781;
+    box-shadow: 0px 1px 50px #3EF781;
     background-color: #30061C;
     width: auto;
     justify-content: center;
@@ -290,14 +295,67 @@ canvas{
     border: 2px solid #175AF8;
     box-shadow: 0px 0px 4px 5px #D5E2FE;
 }
+/*Clase 19: Mejora: MENSAJE_INICIAL*/
 
+.welcome--message{
+    width: 85%;
+    height: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    /*background-color: #FEE3E2;*/
+    border: 3px solid #F8F7FC;
+    border-radius: 5px;
+    box-shadow: 0px 1px 30px #F8F7FC;
+    font-family: 'Roboto', sans-serif;
+    font-size: 35px;
+    color: #F8F7FC;
+    font-weight: 700;
+    row-gap: 65px;
+    padding: 40px 10px 50px 10px;
+    position: absolute;
+    top: 15%;
+    left: 0;
+    right: 0;
+    align-items: center;
+    background-image: url(./assets/Inicio1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    justify-content: center;
+}
+
+.fa-gamepad{
+    font-size: 60px;
+    color: #F8F7FC;
+}
+
+.welcome--message .button--standar{
+    width: 55%;
+    height: 10%;
+    padding: 10px 0;
+    font-size: 18px;
+    text-transform: uppercase;
+    background-color: #AAFEFC;
+    color:#51A1DC;
+    border: 3px solid #51A1DC;
+    box-shadow: 0px 0px 4px 5px white;
+    word-spacing: 3px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.button-big{
+    font-size: 18px;
+}
 
 
 
 
 /*Medias queries*/
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 600px){
     .game-container{
         grid-template-columns: 1fr;
         grid-template-areas: 
@@ -310,9 +368,46 @@ canvas{
    
     }
 
+    .btns{
+        display: grid;
+        margin-bottom: 50px;
+        grid-template-columns: repeat(3, minmax(60px, 140px));
+        grid-template-rows: repeat(3, 40px);
+        grid-template-areas: 
+        " . up ."
+        "left . right"
+        ". down ."
+        ;
+        justify-items: center;
+        align-items: center;
+        margin: 0 auto 20px;
+        grid-area: buttons;
+        align-self: center;
+        justify-self: start;
+    }
+    
     .messages{
+        display: grid;
+        grid-template-columns: 130px 140px;
+        grid-template-rows: repeat(3, 30px);
+        grid-template-areas: 
+        "life life--counter"
+        "timer time--counting"
+        "record record--display"
+        ;
+        padding: 10px 20px 10px 20px;
         justify-self: center;
-
+        grid-area: info;
+        align-self:center;
+        justify-self: center;
+        border: 2px solid #37A769;
+        border-radius: 10px;
+        box-shadow: 0px 1px 10px #3EF781;
+        background-color: #30061C;
+        width: auto;
+        justify-content: center;
+        column-gap: 10px;
+        align-self: flex-start;
     }
 
 
@@ -365,30 +460,10 @@ canvas{
     
     .welcome--message{
         width: 350px;
-        height: 75%;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        /*background-color: #FEE3E2;*/
-        border: 3px solid #F8F7FC;
-        border-radius: 5px;
-        box-shadow: 0px 1px 30px #F8F7FC;
-        font-family: 'Roboto', sans-serif;
+        height: 75%; 
         font-size: 35px;
-        color: #F8F7FC;
-        font-weight: 700;
-        row-gap: 65px;
-        padding: 40px 10px 50px 10px;
-        position: absolute;
-        top: 15%;
         left: calc(50% - 175px);
-        align-items: center;
-        background-image: url(./assets/Inicio1.jpg);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        justify-content: center;
+        right: inherit;
     }
 
     .fa-gamepad{
@@ -398,17 +473,6 @@ canvas{
 
     .welcome--message .button--standar{
         width: 80%;
-        height: 10%;
-        padding: 10px 0;
-        font-size: 18px;
-        text-transform: uppercase;
-        background-color: #AAFEFC;
-        color:#51A1DC;
-        border: 3px solid #51A1DC;
-        box-shadow: 0px 0px 4px 5px white;
-        word-spacing: 3px;
-        letter-spacing: 2px;
-        text-align: center;
     }
 
 }

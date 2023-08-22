@@ -83,7 +83,7 @@ function setCanvasSize(){
     if(window.innerHeight > window.innerWidth){
         canvaSize = window.innerWidth *0.8;
     } else{
-        canvaSize= window.innerHeight * 0.9
+        canvaSize= window.innerHeight * 0.8
     }
 
     canvas.setAttribute("height", canvaSize);
@@ -99,12 +99,8 @@ function setCanvasSize(){
     elementSize=canvaSize/10;
     console.log(elementSize);
     
-
     welcome();
-
-  
     startGame();
-
 }
 
 function startGame(){
@@ -300,6 +296,7 @@ function ganador() {
         firePosition=[];
 
         clearInterval(temporizador);
+
         /* Aquí va LOCALSTORAGE*/
         setRecord();
     }
