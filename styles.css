@@ -460,19 +460,17 @@ canvas{
     
     .welcome--message{
         width: 350px;
-        height: 75%; 
+        height: 100%; 
         font-size: 35px;
         left: calc(50% - 175px);
         right: inherit;
-    }
-
-    .fa-gamepad{
-        font-size: 60px;
-        color: #F8F7FC;
+        top: inherit;
     }
 
     .welcome--message .button--standar{
         width: 80%;
+        height: 40px;
+        font-size: 16px;
     }
 
 }
