@@ -98,16 +98,14 @@ function setCanvasSize(){
 
     elementSize=canvaSize/10;
     console.log(elementSize);
-    
     welcome();
-    startGame();
 }
 
 function startGame(){
 
     game.font = elementSize + "px Verdana";
 
-//Dividir cada mapa en arrays bidimendionales
+    //Dividir cada mapa en arrays bidimendionales
 
     const map = maps[nivel];
     const mapRows = map.trim().split("\n");
@@ -245,17 +243,30 @@ function reStartGame(){
         });
     });
 
-        /*Clase 15: Renderizar al fuego*/
+    renderizarJugador(playerPosition["x"],playerPosition["y"])
+    /*Clase 15: Renderizar al fuego*/
 
-        firePosition.forEach( fire => game.fillText(emojis['BOMB_COLLISION'],fire.x,fire.y))
+    firePosition.forEach( fire => game.fillText(emojis['BOMB_COLLISION'],fire.x,fire.y))
 };
 
 function renderizarJugador(x,y) {  
+    // Clase 12: Agregar condicional para determinar si el jugador ha alcanzado el regalo
+
+    game.fillText(emojis['PLAYER'],x,y);
+
+    const intPlayerPosX = Math.trunc(parseInt(playerPosition["x"]));
+    const intPlayerPosY = Math.trunc(parseInt(playerPosition["y"]));
+    const intRegaloPosX = Math.trunc(parseInt(regaloPosition["x"]));
+    const intRegaloPosY = Math.trunc(parseInt(regaloPosition["y"]));
+
+    if (intPlayerPosX == intRegaloPosX && intPlayerPosY == intRegaloPosY){
+        console.log(intPlayerPosY);
+        console.log(intRegaloPosY);
+        ganador();        
+    } 
     
     // Clase 13: determinar colisiones (bombas)
     
-    game.fillText(emojis['PLAYER'],x,y);
-
     obstaculosPosition.forEach( element => {
         const obstacleColisionX =  Math.trunc(playerPosition["x"]) == Math.trunc(element.x);
         const obstacleColisionY =  Math.trunc(playerPosition["y"]) == Math.trunc(element.y);
@@ -269,8 +280,11 @@ function renderizarJugador(x,y) {
             firePosition.push({x:Math.trunc(element.x),y:Math.trunc(element.y)})
 
             perdedor();
+            
         }
     });
+
+    
 }
 
 function renderizarFire(x,y) {
@@ -282,27 +296,24 @@ function cambiarNivel(){
 }
 
 function ganador() {
-
+    
     cambiarNivel();
     firePosition=[];
 
     if (nivel<maps.length) {
         console.log("Ganó");
         console.log(nivel);
+        clearGame(); //limpia mapa
+        startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones
     } else{
+        clearInterval(temporizador);
         console.log("Ha superado todos los niveles!!!")
         nivel=0;
         lives=3;
         firePosition=[];
-
-        clearInterval(temporizador);
-
         /* Aquí va LOCALSTORAGE*/
         setRecord();
     }
-
-    clearGame();
-    startGame();
 }
 
 function perdedor() {
@@ -318,8 +329,8 @@ function perdedor() {
     } else{
         console.log("Perdió!, repite nivel");
         console.log(playerPosition);
-    }
 
+    }
     clearGame(); //limpia mapa
     startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones
 }
@@ -376,116 +387,51 @@ function clearGame() {
 
 function moveUp(){
     console.log("Movement_Up");
-    clearGame();
-    reStartGame();
 
-//Agregar condicional para evitar que jugador se salga del mapa
-
-    // Clase 12: Agregar condicional para determinar si el jugador ha alcanzado el regalo
+    //Agregar condicional para evitar que jugador se salga del mapa
 
     if(Math.trunc(playerPosition["y"])>Math.trunc((elementSize+1))){    //agrega 1 para evitar error por decimales
         playerPosition["y"]=playerPosition["y"]-Math.trunc(elementSize);
     } 
-
-    const intPlayerPosX = Math.trunc(parseInt(playerPosition["x"]));
-    const intPlayerPosY = Math.trunc(parseInt(playerPosition["y"]));
-    const intRegaloPosX = Math.trunc(parseInt(regaloPosition["x"]));
-    const intRegaloPosY = Math.trunc(parseInt(regaloPosition["y"]));
-
-    if (intPlayerPosX == intRegaloPosX && intPlayerPosY == intRegaloPosY){
-        console.log(intPlayerPosY);
-        console.log(intRegaloPosY);
-        ganador();
-    } 
-
-
-    renderizarJugador(playerPosition["x"],playerPosition["y"]);
-    console.log(playerPosition);
+    clearGame();
+    reStartGame();
 }
 
 function moveLeft(){
     console.log("Movement_Left");
-    clearGame();
-    reStartGame();
 
-//Agregar condicional para evitar que jugador se salga del mapa
+    //Agregar condicional para evitar que jugador se salga del mapa
 
     if(Math.trunc(playerPosition["x"])>1){          //Se establece 1 para evitar error por decimales
         playerPosition["x"]=playerPosition["x"]-Math.trunc(elementSize);
     }
-
-    const intPlayerPosX = Math.trunc(parseInt(playerPosition["x"]));
-    const intPlayerPosY = Math.trunc(parseInt(playerPosition["y"]));
-    const intRegaloPosX = Math.trunc(parseInt(regaloPosition["x"]));
-    const intRegaloPosY = Math.trunc(parseInt(regaloPosition["y"]));
-
-    if (intPlayerPosX == intRegaloPosX && intPlayerPosY == intRegaloPosY){
-        console.log(intPlayerPosY);
-        console.log(intRegaloPosY);
-        ganador();
-    } 
-
-
-    renderizarJugador(playerPosition["x"],playerPosition["y"]);
-    console.log(playerPosition);
-    
+    clearGame();
+    reStartGame();
 }
 
 function moveRight(){
     console.log("Movement_Right");
-    clearGame();
-    reStartGame();
 
 //Agregar condicional para evitar que jugador se salga del mapa
 
     if(Math.trunc(playerPosition["x"])<Math.trunc(((canvaSize-elementSize)-1))){      //Se resta 1 para evitar error por decimales
         playerPosition["x"]=playerPosition["x"]+Math.trunc(elementSize);
     }
-
-    const intPlayerPosX = Math.trunc(parseInt(playerPosition["x"]));
-    const intPlayerPosY = Math.trunc(parseInt(playerPosition["y"]));
-    const intRegaloPosX = Math.trunc(parseInt(regaloPosition["x"]));
-    const intRegaloPosY = Math.trunc(parseInt(regaloPosition["y"]));
-
-    if (intPlayerPosX == intRegaloPosX && intPlayerPosY == intRegaloPosY){
-        console.log(intPlayerPosY);
-        console.log(intRegaloPosY);
-        ganador();
-    } 
-
-
-    renderizarJugador(playerPosition["x"],playerPosition["y"]);
-    console.log(playerPosition);
+    clearGame();
+    reStartGame();
 } 
 
 function moveDown(){
     console.log("Movement_Down");
-
-    clearGame();
-    reStartGame();
 
 //Agregar condicional para evitar que jugador se salga del mapa
     
     if(Math.trunc(playerPosition["y"])<(Math.trunc(canvaSize))){
         playerPosition["y"]=playerPosition["y"]+Math.trunc(elementSize);
     } 
-
-    const intPlayerPosX = Math.trunc(parseInt(playerPosition["x"]));
-    const intPlayerPosY = Math.trunc(parseInt(playerPosition["y"]));
-    const intRegaloPosX = Math.trunc(parseInt(regaloPosition["x"]));
-    const intRegaloPosY = Math.trunc(parseInt(regaloPosition["y"]));
-
-    if (intPlayerPosX == intRegaloPosX && intPlayerPosY == intRegaloPosY){
-        console.log(intPlayerPosY);
-        console.log(intRegaloPosY);
-        ganador();
-    } 
-
-
-    renderizarJugador(playerPosition["x"],playerPosition["y"]);
-    console.log(playerPosition);
+    clearGame();
+    reStartGame();
 }
-
 
 //función con su único parámetro: descriptor del evento
 
@@ -567,7 +513,8 @@ playAgainButton1.addEventListener("click", playAgain);
 function playAgain() {
     newRecordCard.classList.add("inactive");
     timeStart=null;
-    startGame();
+    clearGame(); //limpia mapa
+    startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones
 }
 
 /*Clase 18: Mejora: TARJETA DE VICTORIA SIN RÉCORD*/
@@ -579,7 +526,8 @@ playAgainButton2.addEventListener("click", playAgain2);
 function playAgain2() {
     victoryCard.classList.add("inactive");
     timeStart=null;
-    startGame();
+    clearGame(); //limpia mapa
+    startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones
 }
 
 /*Clase 18: Mejora: TARJETA DE JUEGO PERDIDO*/
@@ -592,7 +540,8 @@ playAgainButton3.addEventListener("click", playAgain3);
 function playAgain3() {
     defeatCard.classList.add("inactive");
     timeStart=null;
-    startGame();
+    clearGame(); //limpia mapa
+    startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones
 }
 
 /*Clase 19: Mejora: MENSAJE_INICIO*/
@@ -611,3 +560,4 @@ function initial() {
     timeStart=null;
     startGame();
 }
+
