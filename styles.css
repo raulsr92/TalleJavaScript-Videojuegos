@@ -162,7 +162,6 @@ canvas{
     border-radius: 10px;
     width: 100%;
     padding: 1px 10px 1px 10px;
-    border: 1px solid #C35A7B;
     grid-area: life--counter;
 
 }
@@ -355,6 +354,92 @@ canvas{
 
 /*Medias queries*/
 
+@media screen and (max-width: 1020px){
+    .game-container{
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+        "main buttons "
+        "main buttons"
+        "info info"
+        ;
+        row-gap: 0;
+        padding-top: 15px;
+   
+    }
+
+    .btns{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4,60px);
+        grid-template-areas: 
+        " up "
+        " down "
+        " left "
+        " right "
+
+        ;
+        row-gap: 20px;
+        justify-items: center;
+        align-items: center;
+        margin: 0;
+        grid-area: buttons;
+        align-self: center;
+        justify-self: start;
+        font-size: 18px;
+        width: 100%;
+    }
+
+    .button-big{
+        display: none;
+    }
+
+    .button-media{
+        display: block;
+    }
+    .fa-caret-left, .fa-caret-up, .fa-caret-down, .fa-caret-right{
+        font-size: 56px;
+    }
+    #up-cel{
+        grid-area: up;
+    }
+    
+    #left-cel{
+        grid-area: left;
+    }
+    
+    #right-cel{
+        grid-area: right;
+
+    }
+    
+    #down-cel{
+        grid-area: down;
+    }
+
+    .messages{
+        display: grid;
+        grid-template-columns: repeat(3, 140px);
+        grid-template-rows: repeat(2, 40px);
+        grid-template-areas: 
+        "life timer  record "
+        "life--counter time--counting  record--display"
+
+        ;
+        grid-area: info;
+        border: 2px solid #37A769;
+        box-shadow: 0px 1px 10px #3EF781;
+        justify-content: center;
+        column-gap: 10px;
+    }    
+
+    .canvas{
+        justify-self: center;
+        align-self: center;
+    }
+}
+
+
+
+
 @media screen and (max-width: 600px){
     .game-container{
         grid-template-columns: 1fr;
@@ -384,6 +469,7 @@ canvas{
         grid-area: buttons;
         align-self: center;
         justify-self: start;
+        justify-content: center;
     }
     
     .messages{
@@ -408,15 +494,6 @@ canvas{
         justify-content: center;
         column-gap: 10px;
         align-self: flex-start;
-    }
-
-
-    .button-big{
-        display: none;
-    }
-
-    .button-media{
-        display: block;
     }
 
     #up-cel{
