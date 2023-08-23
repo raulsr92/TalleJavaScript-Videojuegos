@@ -324,15 +324,13 @@ function perdedor() {
         nivel=0;
         lives=3;
         firePosition=[];
-
         defeatCard.classList.remove("inactive");
     } else{
         console.log("Perdió!, repite nivel");
         console.log(playerPosition);
-
+        clearGame(); //limpia mapa
+        startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones
     }
-    clearGame(); //limpia mapa
-    startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones
 }
 
 function tiempoTrasncurrido() {
@@ -356,27 +354,19 @@ function showTime() {
 }
 
 function setRecord(){
-
     if (localStorage.length==0) {
         localStorage.setItem("record", timeSeconds);
-
         victoryCard.classList.remove("inactive"); 
-
     } else{
-
         if (parseFloat(timeSeconds) < parseFloat(localStorage.getItem("record"))){
             localStorage.setItem("record", timeSeconds);
-
             newRecordCard.classList.remove("inactive");
-
             newRecordPlace.innerHTML = timeSeconds;
-
             /*alert("Su nuevo record es: "+ timeSeconds)*/
         } else{
             victoryCard.classList.remove("inactive"); 
         }
     }
-
 }
 
 /*Clase 10: Crear f para borrar lo renderizado*/
