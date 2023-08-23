@@ -196,7 +196,6 @@ canvas{
 
 .record--display{
     grid-area: record--display;
-    
     color: #FFF4EF;
     text-shadow: 0px 1px 4px #F03B00;
     -webkit-text-stroke: 0.3px #F03B00;
@@ -205,8 +204,8 @@ canvas{
 /*Clase 18: Mejora: TARJETA DE ALERT PARA NUEVO RECORD*/
 
 .message--record, .win-without-record, .message--defeat{
-    width: 300px;
-    height: auto;
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -216,24 +215,27 @@ canvas{
     border-radius: 5px;
     box-shadow: 0px 1px 10px #FEE3E2;
     font-family: 'Roboto', sans-serif;
-    font-size: 18px;
+    font-size: 35px;
     color: #FEE3E2;
     font-weight: 700;
-    row-gap: 15px;
+    row-gap: 65px;
     padding: 10px 10px 20px 10px;
     position: absolute;
-    top: 40%;
-    left: calc(50% - 150px);
+    right: 0;
+    left: 0;
     align-items: center;
     background-image: url(./assets/7872299.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    justify-content: center;
 }
 
 .message--record .button--standar, .win-without-record .button--standar,.message--defeat .button--standar{
+    width: 55%;
+    height: 10%;
     padding: 10px 0;
-    font-size: 18px;
+    font-size: 24px;
     text-transform: uppercase;
     background-color: #FEE3E2;
     color:#E11116;
@@ -245,15 +247,14 @@ canvas{
 }
 
 .fa-ranking-star, .fa-trophy,.fa-ghost{
-    font-size: 40px;
+    font-size: 80px;
 }
 
 .new--record{
-    font-size: 25px;
-    text-shadow: 0px 0px 15px #175AF8;
+    font-size: 45px;
+    text-shadow: 0px 0px 15px #D2E3FF;
+    color: #FFFEF0;
 }
-
-
 
 /*Clase 18: Mejora: TARJETA DE GANADOR SIN NUEVO RECORD*/
 
@@ -298,8 +299,8 @@ canvas{
 /*Clase 19: Mejora: MENSAJE_INICIAL*/
 
 .welcome--message{
-    width: 85%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -315,7 +316,6 @@ canvas{
     row-gap: 65px;
     padding: 40px 10px 50px 10px;
     position: absolute;
-    top: 15%;
     left: 0;
     right: 0;
     align-items: center;
@@ -458,19 +458,25 @@ canvas{
 
     /*Clase 19: Mejora: MENSAJE_INICIAL*/
     
-    .welcome--message{
-        width: 350px;
-        height: 100%; 
-        font-size: 35px;
-        left: calc(50% - 175px);
-        right: inherit;
-        top: inherit;
-    }
-
     .welcome--message .button--standar{
         width: 80%;
         height: 40px;
         font-size: 16px;
+    }
+    
+    /*Clase 18: Mejora: TARJETA DE ALERT PARA NUEVO RECORD*/
+
+    .message--record, .win-without-record, .message--defeat{
+        font-size: 30px;
+    }
+
+    .message--record .button--standar, .win-without-record .button--standar,.message--defeat .button--standar{
+        width: 80%;
+        font-size: 16px;
+    }
+
+    .new--record{
+        font-size: 35px;
     }
 
 }
