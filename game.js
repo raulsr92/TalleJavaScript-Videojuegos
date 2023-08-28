@@ -81,9 +81,9 @@ function setCanvasSize(){
     //Establecer el tamaño de un elemento del canvas(10x10)
 
     if(window.innerHeight > window.innerWidth){
-        canvaSize = window.innerWidth *0.8;
+        canvaSize = Math.trunc(window.innerWidth *0.8);
     } else{
-        canvaSize= window.innerHeight * 0.8
+        canvaSize= Math.trunc(window.innerHeight * 0.8);
     }
 
     canvas.setAttribute("height", canvaSize);
@@ -96,7 +96,8 @@ function setCanvasSize(){
 
     //Establecer el tamaño de un elemento del canvas(10x10)
 
-    elementSize=canvaSize/10;
+    elementSize=(canvaSize/10).toFixed(1);
+    elementSize=parseFloat(elementSize);
     console.log(elementSize);
     welcome();
 }
@@ -136,8 +137,12 @@ function startGame(){
     mapRowsCols.forEach((row, rowIndex) => {
         row.forEach((col, colIndex) => {
             console.log({row, rowIndex, col, colIndex});
-            const posX = Math.trunc(elementSize)*colIndex;
-            const posY = Math.trunc(elementSize)*(rowIndex+1);
+            let posX = elementSize*colIndex;
+            let posY = elementSize*(rowIndex+1);
+            posX = posX.toFixed(1);
+            posX = parseFloat(posX);
+            posY = posY.toFixed(1);
+            posY = parseFloat(posY);
             console.log({posX,posY})
             game.fillText(emojis[col],posX, posY)  //Renderizado del mapa del juego
             //Ubicar posición inicial del JUGADOR
@@ -154,7 +159,7 @@ function startGame(){
             }
             //Ubicar posición de las bombas (Clase 13)
             if (col=='X') {
-                const repetition = obstaculosPosition.find(element => Math.trunc(element.x)==Math.trunc(posX) && Math.trunc(element.y)==Math.trunc(posY));
+                const repetition = obstaculosPosition.find(element => element.x==posX && element.y==posY);
                 console.log(repetition);
                 if(!repetition){
                     obstaculosPosition.push({x:posX, y:posY})
@@ -166,7 +171,7 @@ function startGame(){
             if(col=='-' || col=='I'|| col=='O'){
                 obstaculosPosition.forEach(element => 
                     {
-                        if(element.x==Math.trunc(posX) && element.y==Math.trunc(posY)){
+                        if(element.x==posX && element.y==posY){
                             obstaculosPosition.splice(obstaculosPosition.indexOf(element),1);
                         }                  
                     }                    
@@ -200,8 +205,12 @@ function reStartGame(){
     mapRowsCols.forEach((row, rowIndex) => {
         row.forEach((col, colIndex) => {
             console.log({row, rowIndex, col, colIndex});
-            const posX = Math.trunc(elementSize)*colIndex;
-            const posY = Math.trunc(elementSize)*(rowIndex+1);
+            let posX = elementSize*colIndex;
+            let posY = elementSize*(rowIndex+1);
+            posX = posX.toFixed(1);
+            posX = parseFloat(posX);
+            posY = posY.toFixed(1);
+            posY = parseFloat(posY);
             console.log({posX,posY})
 
             game.fillText(emojis[col],posX, posY)  //Renderizado del mapa del juego
@@ -234,12 +243,12 @@ function reStartGame(){
             if(col=='-' || col=='I'|| col=='O'){
                 obstaculosPosition.forEach(element => 
                     {
-                        if(element.x==Math.trunc(posX) && element.y==Math.trunc(posY)){
+                        if(element.x==posX && element.y==posY){
                             obstaculosPosition.splice(obstaculosPosition.indexOf(element),1);
                         }                  
                     }                    
                     );
-            }            
+            }       
         });
     });
 
@@ -254,10 +263,10 @@ function renderizarJugador(x,y) {
 
     game.fillText(emojis['PLAYER'],x,y);
 
-    const intPlayerPosX = Math.trunc(parseInt(playerPosition["x"]));
-    const intPlayerPosY = Math.trunc(parseInt(playerPosition["y"]));
-    const intRegaloPosX = Math.trunc(parseInt(regaloPosition["x"]));
-    const intRegaloPosY = Math.trunc(parseInt(regaloPosition["y"]));
+    const intPlayerPosX = playerPosition["x"];
+    const intPlayerPosY = playerPosition["y"];
+    const intRegaloPosX = regaloPosition["x"];
+    const intRegaloPosY = regaloPosition["y"];
 
     if (intPlayerPosX == intRegaloPosX && intPlayerPosY == intRegaloPosY){
         console.log(intPlayerPosY);
@@ -277,7 +286,7 @@ function renderizarJugador(x,y) {
 
             // Agregar objetos (posiciones de fuego) al array firePosition
 
-            firePosition.push({x:Math.trunc(element.x),y:Math.trunc(element.y)})
+            firePosition.push({x:element.x,y:element.y})
 
             perdedor();
             
@@ -310,7 +319,6 @@ function ganador() {
         console.log("Ha superado todos los niveles!!!")
         nivel=0;
         lives=3;
-        firePosition=[];
         /* Aquí va LOCALSTORAGE*/
         setRecord();
     }
@@ -358,6 +366,7 @@ function setRecord(){
         localStorage.setItem("record", timeSeconds);
         victoryCard.classList.remove("inactive"); 
     } else{
+
         if (parseFloat(timeSeconds) < parseFloat(localStorage.getItem("record"))){
             localStorage.setItem("record", timeSeconds);
             newRecordCard.classList.remove("inactive");
@@ -380,8 +389,10 @@ function moveUp(){
 
     //Agregar condicional para evitar que jugador se salga del mapa
 
-    if(Math.trunc(playerPosition["y"])>Math.trunc((elementSize+1))){    //agrega 1 para evitar error por decimales
-        playerPosition["y"]=playerPosition["y"]-Math.trunc(elementSize);
+    if(playerPosition["y"]>(elementSize+1)){    //agrega 1 para evitar error por decimales
+        playerPosition["y"]=playerPosition["y"]-elementSize;
+        playerPosition["y"]=playerPosition["y"].toFixed(1);
+        playerPosition["y"]=parseFloat(playerPosition["y"]);
     } 
     clearGame();
     reStartGame();
@@ -392,8 +403,10 @@ function moveLeft(){
 
     //Agregar condicional para evitar que jugador se salga del mapa
 
-    if(Math.trunc(playerPosition["x"])>1){          //Se establece 1 para evitar error por decimales
-        playerPosition["x"]=playerPosition["x"]-Math.trunc(elementSize);
+    if(playerPosition["x"]>1){          //Se establece 1 para evitar error por decimales
+        playerPosition["x"]=playerPosition["x"]-elementSize;
+                playerPosition["x"]=playerPosition["x"].toFixed(1);
+        playerPosition["x"]=parseFloat(playerPosition["x"]);
     }
     clearGame();
     reStartGame();
@@ -404,8 +417,10 @@ function moveRight(){
 
 //Agregar condicional para evitar que jugador se salga del mapa
 
-    if(Math.trunc(playerPosition["x"])<Math.trunc(((canvaSize-elementSize)-1))){      //Se resta 1 para evitar error por decimales
-        playerPosition["x"]=playerPosition["x"]+Math.trunc(elementSize);
+    if(playerPosition["x"]<((canvaSize-elementSize)-1)){      //Se resta 1 para evitar error por decimales
+        playerPosition["x"]=playerPosition["x"]+elementSize;
+        playerPosition["x"]=playerPosition["x"].toFixed(1);
+        playerPosition["x"]=parseFloat(playerPosition["x"]);
     }
     clearGame();
     reStartGame();
@@ -416,8 +431,11 @@ function moveDown(){
 
 //Agregar condicional para evitar que jugador se salga del mapa
     
-    if(Math.trunc(playerPosition["y"])<(Math.trunc(canvaSize))){
-        playerPosition["y"]=playerPosition["y"]+Math.trunc(elementSize);
+    if(playerPosition["y"]<canvaSize){
+        playerPosition["y"]=playerPosition["y"]+elementSize;
+        playerPosition["y"]=playerPosition["y"].toFixed(1);
+        playerPosition["y"]=parseFloat(playerPosition["y"]);
+
     } 
     clearGame();
     reStartGame();
@@ -503,6 +521,7 @@ playAgainButton1.addEventListener("click", playAgain);
 function playAgain() {
     newRecordCard.classList.add("inactive");
     timeStart=null;
+    firePosition=[];
     clearGame(); //limpia mapa
     startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones
 }
@@ -516,6 +535,7 @@ playAgainButton2.addEventListener("click", playAgain2);
 function playAgain2() {
     victoryCard.classList.add("inactive");
     timeStart=null;
+    firePosition=[];
     clearGame(); //limpia mapa
     startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones
 }
@@ -530,6 +550,7 @@ playAgainButton3.addEventListener("click", playAgain3);
 function playAgain3() {
     defeatCard.classList.add("inactive");
     timeStart=null;
+    firePosition=[];
     clearGame(); //limpia mapa
     startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones
 }

@@ -40,13 +40,11 @@ window.addEventListener("resize", setCanvasSize);
 function setCanvasSize(){
     // Clase N° 03
     //Establecer el tamaño de un elemento del canvas(10x10)
-
     if(window.innerHeight > window.innerWidth){
         canvaSize = window.innerWidth *0.8;
     } else{
         canvaSize= window.innerHeight * 0.9;
     }
-
     canvas.setAttribute("height", canvaSize);
     canvas.setAttribute("width", canvaSize);
 
@@ -56,10 +54,11 @@ function setCanvasSize(){
     console.log(canvas.width);
 
     //Establecer el tamaño de un elemento del canvas(10x10)
-
     elementSize=canvaSize/10;
     console.log(elementSize);
     
+    playerPosition["x"]=undefined;
+    playerPosition["y"]=undefined;
     startGame();
 }
 
