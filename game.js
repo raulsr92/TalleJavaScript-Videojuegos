@@ -143,7 +143,7 @@ function startGame(){
             posX = parseFloat(posX);
             posY = posY.toFixed(1);
             posY = parseFloat(posY);
-            console.log({posX,posY})
+            console.log({posX,posY});
             game.fillText(emojis[col],posX, posY)  //Renderizado del mapa del juego
             //Ubicar posición inicial del JUGADOR
             if(col=='O'){
@@ -211,7 +211,7 @@ function reStartGame(){
             posX = parseFloat(posX);
             posY = posY.toFixed(1);
             posY = parseFloat(posY);
-            console.log({posX,posY})
+            console.log({posX,posY});
 
             game.fillText(emojis[col],posX, posY)  //Renderizado del mapa del juego
             //Ubicar la última posición del JUGADOR
@@ -319,6 +319,7 @@ function ganador() {
         console.log("Ha superado todos los niveles!!!")
         nivel=0;
         lives=3;
+        firePosition=[];
         /* Aquí va LOCALSTORAGE*/
         setRecord();
     }
