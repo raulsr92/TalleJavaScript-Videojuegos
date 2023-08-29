@@ -576,6 +576,17 @@ canvas{
     .level--show{
         padding-left: 12px;
     }
+
+    .welcome--contact{
+        width: 90%;
+        grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+        padding: 20px 20px;
+        row-gap: 20px;
+    }
+
+    .contact--logo{
+        column-gap: 10px;
+    }
 }
 
 
@@ -701,6 +712,29 @@ canvas{
         padding-left: 10px;
     }
 
+    .welcome--contact{
+        font-size: 15px;
+        padding: 15px 15px;
+    }
+
+    .social-icons{
+        font-size: 25px;
+    }
+
+    .contact--media{
+        grid-template-columns: repeat(3,1fr);
+        grid-template-areas: 
+        "title title title"
+        "git tik ytb"
+        "insta faceb . "
+        ;
+        row-gap:5px;
+    }
+    
+    .contact--media p{
+        align-self: center;
+    }
+   
 }
 
 .inactive{
