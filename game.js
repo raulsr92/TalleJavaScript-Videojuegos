@@ -121,6 +121,10 @@ function startGame(){
 
     lifesCounter(lives);
 
+    //Mostrar nivel
+
+    showLevel()
+
     //Clase N°17: Establecer tiempo inicial
 
     if (!timeStart) { //validación de que no exista timeStart
@@ -131,6 +135,12 @@ function startGame(){
     //Clase N° 18: Mostrar record
 
     recordDisplay.innerHTML= localStorage.getItem("record")
+
+    //Detener cambio de colores al pasar de nivel
+
+    clearInterval(colorFestival);
+    colorFestival=undefined;
+    canvas.className="color1";
        
     // Uso de método de arrays: arrays.forEach()
 
@@ -146,11 +156,14 @@ function startGame(){
             console.log({posX,posY});
             game.fillText(emojis[col],posX, posY)  //Renderizado del mapa del juego
             //Ubicar posición inicial del JUGADOR
-            if(col=='O'){
-                playerPosition["x"]=posX;
-                playerPosition["y"]=posY;
-                console.log({playerPosition});
+            if (!colorFestival) {
+                if(col=='O'){
+                    playerPosition["x"]=posX;
+                    playerPosition["y"]=posY;
+                    console.log({playerPosition});
+                }
             }
+
             //Ubicar posición del regalo (Clase 12)
             if (col=='I') {
                 regaloPosition["x"]=posX;
@@ -191,6 +204,10 @@ function startGame(){
 };
 
 function reStartGame(){
+
+    //Mostrar nivel
+
+    showLevel()
 
     game.font = elementSize + "px Verdana";
     const map = maps[nivel];
@@ -302,6 +319,7 @@ function renderizarFire(x,y) {
 
 function cambiarNivel(){
     nivel=nivel+1;
+
 }
 
 function ganador() {
@@ -312,8 +330,11 @@ function ganador() {
     if (nivel<maps.length) {
         console.log("Ganó");
         console.log(nivel);
-        clearGame(); //limpia mapa
-        startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones
+
+        changeColor();
+
+        setTimeout(reiniciar,2000)
+        /*startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones*/
     } else{
         clearInterval(temporizador);
         console.log("Ha superado todos los niveles!!!")
@@ -573,3 +594,49 @@ function initial() {
     startGame();
 }
 
+/*Clase 23: Mejora*/
+
+const levelShow =document.querySelector(".level--show");
+let colorFestival;
+
+function showLevel() {
+    levelShow.innerHTML="Nivel"+ " " +(nivel+1);
+}
+
+function oscilar() {
+    console.log(canvas);
+    switch (canvas.className) {
+        case "color1":
+            canvas.className="color2"
+            break;
+    
+        case "color2":
+            canvas.className="color3"
+            break;
+
+        case "color3":
+            canvas.className="color4"
+            break;
+
+        case "color4":
+            canvas.className="color5"
+            break;
+
+        case "color5":
+            canvas.className="color6"
+            break; 
+
+         case "color6":
+            canvas.className="color1"
+            break;                  
+    }
+}
+
+function changeColor() {
+    colorFestival= setInterval(oscilar,100);
+}
+
+function reiniciar(params) {
+    clearGame(); //limpia mapa
+    startGame();
+}

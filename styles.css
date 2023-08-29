@@ -9,7 +9,7 @@
 .game-container{
     height: 100%;
     width: 100%;
-    background-color: #86198E;
+    background-color: #09041A;
     padding-top: 40px;
     padding-bottom: 40px;
     padding-left: 20px;
@@ -18,6 +18,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto auto;
     grid-template-areas: 
+    "nivel . ."
     "main main buttons"
     "main main info"
     ;
@@ -26,10 +27,51 @@
     position: fixed;
 }
 
-canvas{
-    border: 5px solid #e11116;
+
+.color6{
+    border: 5px solid #FFA80B;
+    box-shadow: 0px 1px 60px #FFA80B;
+    background-color: #FFA80B;
+}
+
+.color5{
+    border: 5px solid #18B921;
+    box-shadow: 0px 1px 50px #18B921;
+    background-color: #18B921;
+
+}
+
+.color4{
+    border: 5px solid #279CFE;
+    box-shadow: 0px 1px 60px #279CFE;
+    background-color: #279CFE;
+
+}
+
+.color3{
+    border: 5px solid #CB02E4;
+    box-shadow: 0px 1px 50px #CB02E4;
+    background-color: #CB02E4;
+
+}
+
+.color2{
+    border: 5px solid #FD5E8A;
+    box-shadow: 0px 1px 60px #FD5E8A;
+    background-color: #FD5E8A;
+
+}
+
+.color1{
+    border: 5px solid #DA8FFD;
+    box-shadow: 0px 1px 50px #DA8FFD;
     background-color: #FFF9A7;
-    box-shadow: 0px 1px 50px #D10C1C;
+}
+
+canvas{
+    border: 5px solid #DA8FFD;
+    box-shadow: 0px 1px 50px #DA8FFD;
+    background-color: #FFF9A7;
     border-radius: 5px;
     margin-bottom: 20px;
     margin-top: 10px;
@@ -114,10 +156,10 @@ canvas{
     justify-self: center;
     grid-area: info;
     align-self:center;
-    border: 6px solid #37A769;
+    border: 6px solid #DA8FFD;
     border-radius: 10px;
-    box-shadow: 0px 1px 50px #3EF781;
-    background-color: #30061C;
+    box-shadow: 0px 1px 50px #DA8FFD;
+    background-color: #580AD1;
     width: auto;
     justify-content: center;
     column-gap: 10px;
@@ -135,7 +177,6 @@ canvas{
 .record{
     grid-area: record;
     align-self: center;
-
 }
 
 .messages p{
@@ -148,7 +189,6 @@ canvas{
     font-size: 18px;
     word-spacing: 2px;
     letter-spacing: 2px;
-
 }
 
 /*Clase 15: Contador de vidas */
@@ -163,7 +203,6 @@ canvas{
     width: 100%;
     padding: 1px 10px 1px 10px;
     grid-area: life--counter;
-
 }
 
 .game--over--message, .winner--message{
@@ -349,8 +388,18 @@ canvas{
     font-size: 18px;
 }
 
-
-
+.level--show{
+    grid-area: nivel;
+    font-size: 20px;
+    color: #DA8FFD;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    text-shadow: 0px 1px 4px #DA8FFD;
+    word-spacing: 2px;
+    letter-spacing: 2px;
+    padding-left: 30px;
+}
 
 /*Medias queries*/
 
@@ -358,12 +407,13 @@ canvas{
     .game-container{
         grid-template-columns: 1fr 1fr;
         grid-template-areas: 
+        "nivel nivel "
         "main buttons "
         "main buttons"
         "info info"
         ;
         row-gap: 0;
-        padding-top: 15px;
+        padding-top: 25px;
    
     }
 
@@ -422,11 +472,10 @@ canvas{
         grid-template-areas: 
         "life timer  record "
         "life--counter time--counting  record--display"
-
         ;
         grid-area: info;
-        border: 2px solid #37A769;
-        box-shadow: 0px 1px 10px #3EF781;
+        border: 2px solid #DA8FFD;
+        box-shadow: 0px 1px 10px #DA8FFD;
         justify-content: center;
         column-gap: 10px;
     }    
@@ -434,6 +483,10 @@ canvas{
     .canvas{
         justify-self: center;
         align-self: center;
+    }
+
+    .level--show{
+        padding-left: 12px;
     }
 }
 
@@ -444,13 +497,12 @@ canvas{
     .game-container{
         grid-template-columns: 1fr;
         grid-template-areas: 
+        "nivel"
         "main "
         "buttons"
         "info"
         ;
         row-gap: 0;
-        padding-top: 15px;
-   
     }
 
     .btns{
@@ -486,10 +538,10 @@ canvas{
         grid-area: info;
         align-self:center;
         justify-self: center;
-        border: 2px solid #37A769;
+        border: 2px solid #DA8FFD;
         border-radius: 10px;
-        box-shadow: 0px 1px 10px #3EF781;
-        background-color: #30061C;
+        box-shadow: 0px 1px 10px #DA8FFD;
+        background-color: #580AD1;
         width: auto;
         justify-content: center;
         column-gap: 10px;
@@ -555,6 +607,10 @@ canvas{
 
     .new--record{
         font-size: 35px;
+    }
+
+    .level--show{
+        padding-left: 10px;
     }
 
 }
