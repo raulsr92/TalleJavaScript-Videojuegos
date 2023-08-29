@@ -280,9 +280,9 @@ canvas{
 }
 
 .message--record .button--standar, .win-without-record .button--standar,.message--defeat .button--standar{
-    width: 55%;
+    width: 270px;
     height: 10%;
-    padding: 10px 0;
+    padding: 10px 5px;
     font-size: 24px;
     text-transform: uppercase;
     background-color: #FEE3E2;
