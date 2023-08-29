@@ -335,7 +335,7 @@ function ganador() {
         changeColor();
 
         setTimeout(reiniciar,2000)
-        /*startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones*/
+        /*startGame(); */
     } else{
         clearInterval(temporizador);
         console.log("Ha superado todos los niveles!!!")
@@ -641,5 +641,5 @@ function changeColor() {
 
 function reiniciar() {
     clearGame(); //limpia mapa
-    startGame();
+    startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones*/
 }
