@@ -326,6 +326,7 @@ function ganador() {
     
     cambiarNivel();
     firePosition=[];
+    
 
     if (nivel<maps.length) {
         console.log("Ganó");
@@ -596,8 +597,10 @@ function initial() {
 
 /*Clase 23: Mejora*/
 
-const levelShow =document.querySelector(".level--show");
 let colorFestival;
+
+const levelShow =document.querySelector(".level--show");
+
 
 function showLevel() {
     levelShow.innerHTML="Nivel"+ " " +(nivel+1);
@@ -636,7 +639,7 @@ function changeColor() {
     colorFestival= setInterval(oscilar,100);
 }
 
-function reiniciar(params) {
+function reiniciar() {
     clearGame(); //limpia mapa
     startGame();
 }
