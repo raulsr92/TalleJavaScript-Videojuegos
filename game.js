@@ -141,6 +141,11 @@ function startGame(){
     clearInterval(colorFestival);
     colorFestival=undefined;
     canvas.className="color1";
+    
+    //Detener cambio de colores al perder vida
+
+    clearInterval(loseFestival);
+    loseFestival=undefined;
        
     // Uso de método de arrays: arrays.forEach()
 
@@ -359,8 +364,10 @@ function perdedor() {
     } else{
         console.log("Perdió!, repite nivel");
         console.log(playerPosition);
-        clearGame(); //limpia mapa
-        startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones
+
+        losingAnimation()
+
+        setTimeout(reiniciar,2000)
     }
 }
 
@@ -595,7 +602,7 @@ function initial() {
     startGame();
 }
 
-/*Clase 23: Mejora*/
+/*Clase 23: Reto-1*/
 
 let colorFestival;
 
@@ -642,4 +649,35 @@ function changeColor() {
 function reiniciar() {
     clearGame(); //limpia mapa
     startGame(); //renderiza mapa donde jugador está donde está la puerta.Aquí se dibujan los corazones*/
+}
+
+
+/*Clase 23: Reto-2*/
+
+let loseFestival;
+
+function losingAnimation() {
+    loseFestival= setInterval(oscilar2,100);
+}
+
+function oscilar2() {
+    console.log(canvas);
+    switch (canvas.className) {
+        case "color1":
+            canvas.className="color7"
+            break;
+    
+        case "color7":
+            canvas.className="color8"
+            break;  
+
+        case "color8":
+            canvas.className="color9"
+               break;  
+               
+        case "color9":
+            canvas.className="color7"
+             break;   
+            
+    }
 }
