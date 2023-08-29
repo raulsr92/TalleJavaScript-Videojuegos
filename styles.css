@@ -126,7 +126,6 @@ canvas{
 
 .button--standar{
     width: 80%;
-    min-width: 50%;
     height: 100%;
     background-color: #D03ED3;
     color: #FFFEF0;
@@ -363,7 +362,7 @@ canvas{
     color: #F8F7FC;
     font-weight: 700;
     row-gap: 65px;
-    padding: 40px 10px 50px 10px;
+    padding: 40px 10px 20px 10px;
     position: absolute;
     left: 0;
     right: 0;
@@ -373,6 +372,7 @@ canvas{
     background-position: center;
     background-size: cover;
     justify-content: center;
+    justify-content: space-around;
 }
 
 .fa-gamepad{
@@ -381,18 +381,25 @@ canvas{
 }
 
 .welcome--message .button--standar{
-    width: 55%;
+    width: 250px;
     height: 10%;
     padding: 10px 0;
     font-size: 18px;
     text-transform: uppercase;
-    background-color: #AAFEFC;
+    background-color: #F8F7FC;
     color:#51A1DC;
     border: 3px solid #51A1DC;
     box-shadow: 0px 0px 4px 5px white;
     word-spacing: 3px;
     letter-spacing: 2px;
     text-align: center;
+}
+.welcome--message p{
+    text-shadow: 0px 0px 10px #F8F7FC;
+}
+
+.welcome--message--title{
+    padding-top: 35px;
 }
 
 .button-big{
@@ -411,6 +418,76 @@ canvas{
     letter-spacing: 2px;
     padding-left: 30px;
 }
+
+.welcome--contact{
+    margin: 0 auto;
+    width: 80%;
+    font-size: 18px;
+    display: grid;
+    grid-template-columns: repeat(2,minmax(300px, 1fr));
+    text-shadow: 0px 0px 10px #F8F7FC;
+    padding: 20px 40px;
+    border: 1px solid #F8F7FC;
+    box-shadow: 0px 0px 20px 10px #F8F7FC;
+    border-radius: 10px;
+}
+
+.contact--logo{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+
+}
+
+.contact--logo img{
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 0px 4px 5px #F8F7FC;
+}
+
+.contact--media{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-areas: 
+    "title title title title title"
+    "git tik ytb insta faceb"
+    ;
+    row-gap: 15px;
+}
+
+.contact--media p{
+    grid-area: title;
+}
+
+.fa-github{
+    grid-area: git;
+}
+
+.fa-tiktok{
+    grid-area: tik;
+}
+
+.fa-youtube{
+    grid-area: ytb;
+}
+
+.fa-instagram{
+    grid-area: insta;
+}
+
+.fa-square-facebook{
+    grid-area: faceb;
+}
+
+.social-icons{
+    color: #F8F7FC;
+    text-shadow: 0px 0px 10px #F8F7FC;
+    font-size: 35px;
+}
+
+
+
+
 
 /*Medias queries*/
 
