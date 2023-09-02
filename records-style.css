@@ -8,6 +8,7 @@
 }
 
 body{
+    height: 100vh; /*para que ocupe toda la pantalla y no haya espacios en blanco*/
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: repeat(4,auto);
@@ -47,7 +48,7 @@ body{
 main{
     width: 100%;
     height: auto;
-    padding: 60px 0;
+    padding: 80px 0;
     background-color: #FEB34D;
     grid-area: principal;
 }
@@ -92,7 +93,7 @@ main{
     position: absolute;
     left: calc(50% - 225px);
     top: calc(0% - 30px);
-    box-shadow: 0px 7px 2px 5px #3C5EFE;
+    box-shadow: 0px 7px 2px 2px #3C5EFE;
 
 }
 
@@ -169,6 +170,11 @@ main{
 
 .players--container{
     grid-area: player;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    padding: 15px 5px;
+    row-gap: 10px;
 }
 
 .fa-circle-plus{
@@ -176,6 +182,60 @@ main{
     color: #EBEEFD;
 }
 
+.player--record{
+    background-color: #F7FBFC;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: -4px 5px 2px 2px #0056C3;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto;
+    column-gap: 8px;
+    font-family: 'Permanent Marker', cursive;
+    color: #E7EFFF;
+}
+
+.player--record__name, .player--record__time{
+    background-color: #A9BCE7;
+    padding: 7px;
+    border-radius: 5px;
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+}
+
+.player--record__number{
+    width: 50px;
+    height: 50px;
+    background-color: #FF3F3E;
+    border: 4px solid #FCFAFE;
+    text-align: center;
+    font-size: 30px;
+    -webkit-text-stroke: 2px black;
+    border-radius: 15px;
+    text-shadow: 0px 5px 1px #BC1E63;
+    box-shadow: 0px 2px 1px 1px #BD195A;
+
+}
+
+.player--record__signature, .player--record__record{
+    font-size: 30px;
+    -webkit-text-stroke: 2px black;
+    text-shadow: 0px 5px 1px #6B90BD;
+}
+
+.fa-clock{
+    font-size: 30px;
+
+}
+
+.player--record__icon{
+    width: 50px;
+}
+
+.player--record__time{
+    justify-content: space-around;
+}
 
 /*Footer*/
 
