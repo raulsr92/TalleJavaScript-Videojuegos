@@ -48,7 +48,7 @@ body{
 main{
     width: 100%;
     height: auto;
-    padding: 80px 0;
+    padding: 80px 0 70px 0;
     background-color: #FEB34D;
     grid-area: principal;
 }
@@ -94,7 +94,6 @@ main{
     left: calc(50% - 225px);
     top: calc(0% - 30px);
     box-shadow: 0px 7px 2px 2px #3C5EFE;
-
 }
 
 .records--main__down{
@@ -141,7 +140,6 @@ main{
 
 }
 
-
 .plus2--circle{
     grid-area: icon--plus--two;
     justify-self: end;
@@ -156,7 +154,6 @@ main{
     justify-self: end;
 
 }
-
 
 .circle--container{
     width: 35px;
@@ -226,7 +223,10 @@ main{
 
 .fa-clock{
     font-size: 30px;
+}
 
+.player--record{
+    column-gap: 5px;
 }
 
 .player--record__icon{
@@ -266,7 +266,6 @@ main{
     grid-template-columns: 1fr 1fr;
     align-items: center;
     padding-right: 55px;
-
 }
 
 .contact--logo img{
@@ -320,4 +319,130 @@ main{
     color: #F8F7FC;
     font-size: 20px;
 
+}
+
+@media screen and (max-width: 1020px){
+
+    /*Cabecera*/
+
+    .records--header{
+        padding: 20px 0px;
+    }
+    
+    .records--header h1{
+        font-size: 40px;
+    }
+    
+    .fa-address-card{
+        font-size: 50px;
+    }
+
+    /*Footer*/
+
+    .welcome--contact{
+        width: 90%;
+        grid-template-columns: repeat(auto-fit,minmax(320px, 1fr));
+        padding: 20px 20px;
+        row-gap: 20px;
+    }
+
+    .contact--logo{
+        grid-template-columns: 2fr 1fr;
+        column-gap: 10px;
+        padding-right: 0;
+    }
+
+}
+
+@media screen and (max-width: 600px){
+
+    /*Cabecera*/
+
+    .records--header{
+        padding: 30px 20px 40px;
+        flex-direction: column;
+        row-gap: 10px;
+    }
+
+    .records--header h1{
+        text-align: center;
+        line-height: 45px;
+    }
+    
+    .fa-address-card{
+        font-size: 40px;
+    }
+
+    /*Main*/
+    
+    .records--card{
+        width: 350px;
+    }
+
+    .records--main__up h2{
+        width: 250px;
+        font-size: 30px;
+        padding: 10px 30px;
+        left: calc(50% - 125px);
+        top: calc(0% - 50px);
+    }
+    
+    .records--main__down{
+        width: 230px;
+        font-size: 30px;
+        border-radius: 30px;
+        left: calc(50% - 115px);
+    }
+
+    .botton--green{
+        width: 60px;
+        border: 4px solid #F7FBFE;
+    }
+
+    .player--record__signature, .player--record__record{
+        font-size: 25px;
+        -webkit-text-stroke: 1.5px black;
+    }
+
+    .player--record__name, .player--record__time{
+        padding: 4px;
+    }
+
+    .player--record__icon{
+        width: 30px;
+    }
+
+    .records--main__list{
+         padding: 30px 10px;
+    }
+
+    .player--record__number{
+        width: 40px;
+        font-size: 25px;
+        height: 40px;
+        border: 3px solid #FCFAFE;
+        -webkit-text-stroke: 1.5px black;
+        border-radius: 10px;
+    }
+
+    /*Footer*/
+
+    .welcome--contact{
+        font-size: 15px;
+        padding: 50px 15px;
+        row-gap: 40px;
+    }
+
+    .social-icons{
+        font-size: 25px;
+    }
+
+   
+    .contact--media p{
+        align-self: center;
+    }
+
+    .contact--logo{
+        grid-template-columns: 3fr 1fr;
+    }
 }
