@@ -298,6 +298,7 @@ canvas{
 .message--record div .button--standar{
     height: 100px;
     padding: 20px 10px;
+    text-decoration: none;
 }
 
 .message--record div{
