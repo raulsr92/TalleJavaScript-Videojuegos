@@ -292,6 +292,19 @@ canvas{
     word-spacing: 3px;
     letter-spacing: 2px;
     text-align: center;
+    
+}
+
+.message--record div .button--standar{
+    height: 100px;
+    padding: 20px 10px;
+}
+
+.message--record div{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    column-gap: 50px;
+ 
 }
 
 .fa-ranking-star, .fa-trophy,.fa-ghost{
@@ -587,6 +600,13 @@ canvas{
     .contact--logo{
         column-gap: 10px;
     }
+
+    .message--record div .button--standar{
+        width: 200px;
+        height: 80px;
+        font-size: 18px;
+    }
+    
 }
 
 
@@ -697,6 +717,7 @@ canvas{
 
     .message--record, .win-without-record, .message--defeat{
         font-size: 30px;
+        row-gap: 35px;
     }
 
     .message--record .button--standar, .win-without-record .button--standar,.message--defeat .button--standar{
@@ -734,6 +755,19 @@ canvas{
     .contact--media p{
         align-self: center;
     }
+
+    .message--record div{
+        grid-template-columns: repeat(1,1fr);
+        row-gap: 35px;
+
+    }
+
+    .message--record div .button--standar{
+        width: 220px;
+        font-size: 15px;
+        height: 65px;
+    }
+    
    
 }
 
