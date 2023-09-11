@@ -681,3 +681,5 @@ function oscilar2() {
             
     }
 }
+
+

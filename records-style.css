@@ -333,7 +333,6 @@ main{
     font-family: 'Permanent Marker', cursive;
     left: calc(50%  - 200px);
     box-shadow: 0px 2px 60px 100px #1E0E35;
-
 }
 
 .register--card__layer1{
@@ -380,10 +379,6 @@ main{
 .type2:hover{
     background-color: #61B5B3;
 }
-
-    box-shadow: 0px 7px 2px 2px #3C5EFE;
-
-
 
 
 @media screen and (max-width: 1020px){
@@ -510,4 +505,9 @@ main{
     .contact--logo{
         grid-template-columns: 3fr 1fr;
     }
+}
+
+
+.inactive{
+    display: none;
 }
