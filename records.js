@@ -16,7 +16,6 @@ const records = [];
 
 function almacenarRecord() {
 
-
     if (nicknamePlayer.value == "") {
         alert("Ingrese un nickname")
     }else{
@@ -29,5 +28,38 @@ function almacenarRecord() {
         registerCard.classList.add("inactive");
     }
 
+    generatePlayer(records);
 }
+
+/* Interacción N° 02 - Que el NICKNAME almacenado  en array records se muestre en la pantalla.*/
+
+function generatePlayer(array){
+    array.forEach((player) => {
+        const articlePlayer = document.createElement("article");
+        articlePlayer.setAttribute("class", "player--record");
+        const divPlayersContainer = document.querySelector(".players--container");
+        divPlayersContainer.append(articlePlayer);
+
+        const divPlayer = document.createElement("div");
+        divPlayer.setAttribute("class","player--record__name");
+        articlePlayer.append(divPlayer);
+
+        const divTime = document.createElement("div");
+        divTime.setAttribute("class","player--record__time");
+        articlePlayer.append(divTime);
+
+        const numberOfRecord = document.createElement("span");
+        numberOfRecord.setAttribute("class", "player--record__number");
+        divPlayer.append(numberOfRecord);
+        numberOfRecord.innerHTML=array.indexOf(player)+1;
+
+        const signaturePlayer= document.createElement("p");
+        signaturePlayer.setAttribute("class","player--record__signature");
+        divPlayer.append(signaturePlayer);
+        signaturePlayer.innerHTML=player.nickname;
+        });
+    console.log(array);
+
+};
+
 
