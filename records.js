@@ -57,6 +57,17 @@ function generatePlayer(array){
         signaturePlayer.setAttribute("class","player--record__signature");
         divPlayer.append(signaturePlayer);
         signaturePlayer.innerHTML=player.nickname;
+
+        const timePlayer = document.createElement("p");
+        timePlayer.setAttribute("class", "player--record__record");
+        divTime.append(timePlayer);
+        timePlayer.innerHTML = player.record;
+
+        const iconTimer = document.createElement("img");
+        iconTimer.setAttribute("class", "player--record__icon");
+        iconTimer.setAttribute("src", "./assets/chronometer.png");
+        divTime.append(iconTimer);
+
         });
     console.log(array);
 
