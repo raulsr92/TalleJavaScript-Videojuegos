@@ -18,7 +18,7 @@ function almacenarRecord() {
 
     if (nicknamePlayer.value == "") {
         alert("Ingrese un nickname")
-    }else{
+    }else if(localStorage.getItem("array")==null){
         records.push(
             {
                 nickname: nicknamePlayer.value,
@@ -26,6 +26,19 @@ function almacenarRecord() {
             }
         );  
         registerCard.classList.add("inactive");
+
+        localStorage.setItem("array",JSON.stringify(records));
+    }else if (localStorage.getItem("array")) {
+        records.push(JSON.parse(localStorage.getItem("array"))[0]);
+        records.push(
+            {
+                nickname: nicknamePlayer.value,
+                record: localStorage.getItem("record"),
+            }
+        );  
+        localStorage.setItem("array",JSON.stringify(records));
+        registerCard.classList.add("inactive");
+
     }
 
     generatePlayer(records);
