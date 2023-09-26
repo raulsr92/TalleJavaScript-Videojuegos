@@ -15,21 +15,9 @@ aceptarButton.addEventListener("click", almacenarRecord);
 const records = [];
 
 function almacenarRecord() {
-
     if (nicknamePlayer.value == "") {
         alert("Ingrese un nickname")
-    }else if(localStorage.getItem("array")==null){
-        records.push(
-            {
-                nickname: nicknamePlayer.value,
-                record: localStorage.getItem("record"),
-            }
-        );  
-        registerCard.classList.add("inactive");
-
-        localStorage.setItem("array",JSON.stringify(records));
-    }else if (localStorage.getItem("array")) {
-        records.push(JSON.parse(localStorage.getItem("array"))[0]);
+    } else if(localStorage.getItem("array")==null){
         records.push(
             {
                 nickname: nicknamePlayer.value,
@@ -38,9 +26,22 @@ function almacenarRecord() {
         );  
         localStorage.setItem("array",JSON.stringify(records));
         registerCard.classList.add("inactive");
+    } else if(localStorage.getItem("array")){
 
+        let arrayLenght = JSON.parse(localStorage.getItem("array")).length;
+
+        for (let i = 0; i < arrayLenght; i++) {
+            records.push(JSON.parse(localStorage.getItem("array"))[i]);
+        }
+        records.push(
+            { 
+                nickname: nicknamePlayer.value,
+                record: localStorage.getItem("record"),
+            }
+        );  
+        localStorage.setItem("array",JSON.stringify(records));
+        registerCard.classList.add("inactive");
     }
-
     generatePlayer(records);
 }
 
