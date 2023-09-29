@@ -376,7 +376,7 @@ canvas{
     color: #F8F7FC;
     font-weight: 700;
     row-gap: 65px;
-    padding: 40px 10px 20px 10px;
+    padding: 30px 10px 20px 10px;
     position: absolute;
     left: 0;
     right: 0;
@@ -395,9 +395,8 @@ canvas{
 }
 
 .welcome--message .button--standar{
-    width: 250px;
-    height: 10%;
-    padding: 10px 0;
+    height: auto;
+    padding: 8px 12px;
     font-size: 18px;
     text-transform: uppercase;
     background-color: #F8F7FC;
@@ -407,6 +406,7 @@ canvas{
     word-spacing: 3px;
     letter-spacing: 2px;
     text-align: center;
+    text-decoration: none;
 }
 .welcome--message p{
     text-shadow: 0px 0px 10px #F8F7FC;
@@ -433,7 +433,7 @@ canvas{
     padding-left: 30px;
 }
 
-.welcome--contact{
+.welcome--message .welcome--contact{
     margin: 0 auto;
     width: 80%;
     font-size: 18px;
@@ -499,6 +499,10 @@ canvas{
     font-size: 35px;
 }
 
+.welcome--message div:nth-child(3){
+    display: flex;
+    column-gap: 40px;
+}
 
 
 
@@ -591,7 +595,7 @@ canvas{
         padding-left: 12px;
     }
 
-    .welcome--contact{
+    .welcome--message .welcome--contact{
         width: 90%;
         grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
         padding: 20px 20px;
@@ -668,6 +672,10 @@ canvas{
         align-self: flex-start;
     }
 
+    .welcome--message div:nth-child(3){
+        column-gap: 30px;
+    }
+
     #up-cel{
         grid-area: up;
     }
@@ -708,10 +716,8 @@ canvas{
     /*Clase 19: Mejora: MENSAJE_INICIAL*/
     
     .welcome--message .button--standar{
-        width: 80%;
-        height: 60px;
-        font-size: 18px;
-        padding-top: 15px;
+        font-size: 16px;
+        padding: 8px 10px;
     }
     
     /*Clase 18: Mejora: TARJETA DE ALERT PARA NUEVO RECORD*/
@@ -734,7 +740,7 @@ canvas{
         padding-left: 10px;
     }
 
-    .welcome--contact{
+    .welcome--message .welcome--contact{
         font-size: 15px;
         padding: 15px 15px;
     }
