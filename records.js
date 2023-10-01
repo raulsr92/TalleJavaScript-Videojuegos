@@ -26,11 +26,13 @@ function almacenarRecord() {
         );  
         localStorage.setItem("array",JSON.stringify(records));
         registerCard.classList.add("inactive");
+
     } else if(localStorage.getItem("array")){
 
-        let arrayLenght = JSON.parse(localStorage.getItem("array")).length;
+        let arrayLength = JSON.parse(localStorage.getItem("array")).length;
+        console.log(arrayLength);
 
-        for (let i = 0; i < arrayLenght; i++) {
+        for (let i = 0; i < arrayLength; i++) {
             records.push(JSON.parse(localStorage.getItem("array"))[i]);
         }
         records.push(
@@ -86,5 +88,34 @@ function generatePlayer(array){
     console.log(array);
 
 };
+
+
+/* OM 2*/
+
+/* Capturar el último array almacenado en localStorage */
+
+let lastArrayInLS =JSON.parse(localStorage.getItem("array"));
+
+/* Capturar el último record registrado en local Storage*/
+
+let lastRecordInLocalStorage= parseFloat(localStorage.getItem("record"));
+console.log(lastRecordInLocalStorage);
+
+if ((parseFloat(lastArrayInLS[(lastArrayInLS.length)-1].record))==lastRecordInLocalStorage) {
+    registerCard.classList.add("inactive");
+
+
+    let arrayLength = JSON.parse(localStorage.getItem("array")).length;
+    console.log(arrayLength);
+
+    for (let i = 0; i < arrayLength; i++) {
+        records.push(JSON.parse(localStorage.getItem("array"))[i]);
+    }
+
+    generatePlayer(records);
+
+}
+
+
 
 
