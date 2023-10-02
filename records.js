@@ -113,7 +113,19 @@ if ((parseFloat(lastArrayInLS[(lastArrayInLS.length)-1].record))==lastRecordInLo
     }
 
     generatePlayer(records);
+}
 
+/*RETO 6 */
+
+let restartButton = document.querySelector("#deleteRecords");
+console.log(restartButton);
+
+let warningCard = document.querySelector("#warning-type")
+
+restartButton.addEventListener("click", showWarning);
+
+function showWarning(){
+    warningCard.classList.remove("inactive");
 }
 
 
