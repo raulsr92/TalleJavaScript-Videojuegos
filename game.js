@@ -392,7 +392,7 @@ function showTime() {
 }
 
 function setRecord(){
-    if (localStorage.length==0) {
+    if (localStorage.getItem("record")==null) {
         localStorage.setItem("record", timeSeconds);
         victoryCard.classList.remove("inactive"); 
     } else{

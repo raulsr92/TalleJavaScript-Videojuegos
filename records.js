@@ -12,7 +12,7 @@ const registerCard =  document.querySelector(".register--card");
 
 aceptarButton.addEventListener("click", almacenarRecord);
 
-const records = [];
+let records = [];
 
 function almacenarRecord() {
     if (nicknamePlayer.value == "") {
@@ -26,6 +26,7 @@ function almacenarRecord() {
         );  
         localStorage.setItem("array",JSON.stringify(records));
         registerCard.classList.add("inactive");
+        location.reload();
 
     } else if(localStorage.getItem("array")){
 
@@ -89,7 +90,6 @@ function generatePlayer(array){
 
 };
 
-
 /* OM 2*/
 
 /* Capturar el último array almacenado en localStorage */
@@ -101,7 +101,17 @@ let lastArrayInLS =JSON.parse(localStorage.getItem("array"));
 let lastRecordInLocalStorage= parseFloat(localStorage.getItem("record"));
 console.log(lastRecordInLocalStorage);
 
-if ((parseFloat(lastArrayInLS[(lastArrayInLS.length)-1].record))==lastRecordInLocalStorage) {
+if ((localStorage.getItem("record")!=null)&&(parseFloat(lastArrayInLS[(lastArrayInLS.length)-1].record)!=lastRecordInLocalStorage)) {
+    registerCard.classList.remove("inactive");
+
+} else if(lastArrayInLS==null){
+    registerCard.classList.add("inactive");
+}
+
+else if (lastRecordInLocalStorage=="") {
+    registerCard.classList.add("inactive");
+
+} else if ((parseFloat(lastArrayInLS[(lastArrayInLS.length)-1].record))==lastRecordInLocalStorage){
     registerCard.classList.add("inactive");
 
 
@@ -113,9 +123,12 @@ if ((parseFloat(lastArrayInLS[(lastArrayInLS.length)-1].record))==lastRecordInLo
     }
 
     generatePlayer(records);
-}
+} 
+
 
 /*RETO 6 */
+
+/* Interacción N° 1*/
 
 let restartButton = document.querySelector("#deleteRecords");
 console.log(restartButton);
@@ -128,6 +141,21 @@ function showWarning(){
     warningCard.classList.remove("inactive");
 }
 
+/* Interacción N° 2*/
 
+let aceptarButton2 = document.querySelector("#warning-button");
 
+aceptarButton2.addEventListener("click", deleteLocalStorage);
 
+function deleteLocalStorage() {
+    warningCard.classList.add("inactive");
+
+    localStorage.clear();   
+    records = [];
+    lastArrayInLS=[];
+
+    location.reload();
+
+    generatePlayer(records);
+
+}
