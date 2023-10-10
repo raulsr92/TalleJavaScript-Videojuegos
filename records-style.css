@@ -398,12 +398,18 @@ main{
     background-color: #FC6B5B;
 }
 
-#warning-type-layer1 div{
+#warning-type-layer1 >div{
     display: flex;
     flex-direction: column;
     row-gap: 15px;
     align-items: center;
 }
+
+#warning-type-layer1 >div>div{
+    display: flex;
+    column-gap: 10px;
+}
+
 #warning-type-layer1 div p{
     font-size: 19px;
     color: white;

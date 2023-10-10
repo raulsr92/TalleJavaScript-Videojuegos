@@ -159,3 +159,14 @@ function deleteLocalStorage() {
     generatePlayer(records);
 
 }
+
+/* OM N° 3*/
+
+let declineButton = document.querySelector("#warning-button-no");
+
+declineButton.addEventListener("click",noDelete)
+
+function noDelete() {
+    warningCard.classList.add("inactive");
+
+}
