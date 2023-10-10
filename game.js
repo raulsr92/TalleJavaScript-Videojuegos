@@ -599,8 +599,12 @@ initialGame.addEventListener("click", initial);
 function initial() {
 
     const defeatScreenIsClosed= defeatCard.classList.contains("inactive")
-
     if(!defeatScreenIsClosed){
+        defeatCard.classList.add("inactive");
+    }
+
+    const victorryScreenIsClosed= victoryCard.classList.contains("inactive")
+    if(!victorryScreenIsClosed){
         defeatCard.classList.add("inactive");
     }
 
@@ -697,9 +701,25 @@ let returnToMainMenu = document.querySelector("#menu-button");
 returnToMainMenu.addEventListener("click",welcomeAfterLose)
 
 function welcomeAfterLose() {
-    const defeatScreenIsClosed= defeatCard.classList.contains("inactive")
+    const defeatScreenIsClosed= defeatCard.classList.contains("inactive");
 
     if(!defeatScreenIsClosed){
+        defeatCard.classList.add("inactive");
+    }
+
+    welcomeCard.classList.toggle("inactive");  
+}
+
+/* OM N° 5*/
+
+let returnToMainMenu2 = document.querySelector("#menu-button2");
+
+returnToMainMenu2.addEventListener("click",welcomeAfterWinWithoutRecord)
+
+function welcomeAfterWinWithoutRecord() {
+    const victorryScreenIsClosed= victoryCard.classList.contains("inactive")
+
+    if(!victorryScreenIsClosed){
         defeatCard.classList.add("inactive");
     }
 

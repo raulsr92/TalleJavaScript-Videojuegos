@@ -510,6 +510,10 @@ canvas{
     column-gap: 30px;
 }
 
+.win-without-record > div{
+    display: flex;
+    column-gap: 30px;
+}
 
 /*Medias queries*/
 
