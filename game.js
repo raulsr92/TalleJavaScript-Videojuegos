@@ -597,6 +597,7 @@ function welcome() {
 initialGame.addEventListener("click", initial);
 
 function initial() {
+    defeatCard.classList.add("inactive");
     welcomeCard.classList.add("inactive");
     timeStart=null;
     startGame();
@@ -687,5 +688,9 @@ function oscilar2() {
 
 let returnToMainMenu = document.querySelector("#menu-button");
 
-returnToMainMenu.addEventListener("click",welcome)
+returnToMainMenu.addEventListener("click",welcomeAfterLose)
 
+function welcomeAfterLose() {
+    defeatCard.classList.toggle("inactive");
+    welcomeCard.classList.toggle("inactive");  
+}
