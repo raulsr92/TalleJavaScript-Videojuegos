@@ -281,7 +281,7 @@ canvas{
 
 .message--record .button--standar, .win-without-record .button--standar,.message--defeat .button--standar{
     width: 270px;
-    height: 10%;
+    height: auto;
     padding: 10px 5px;
     font-size: 24px;
     text-transform: uppercase;
@@ -502,6 +502,12 @@ canvas{
 .welcome--message div:nth-child(3){
     display: flex;
     column-gap: 40px;
+}
+
+
+.message--defeat > div{
+    display: flex;
+    column-gap: 30px;
 }
 
 

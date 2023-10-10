@@ -683,5 +683,9 @@ function oscilar2() {
 }
 
 
+/* OM N° 4*/
 
+let returnToMainMenu = document.querySelector("#menu-button");
+
+returnToMainMenu.addEventListener("click",welcome)
 
