@@ -597,8 +597,14 @@ function welcome() {
 initialGame.addEventListener("click", initial);
 
 function initial() {
-    defeatCard.classList.add("inactive");
-    welcomeCard.classList.add("inactive");
+
+    const defeatScreenIsClosed= defeatCard.classList.contains("inactive")
+
+    if(!defeatScreenIsClosed){
+        defeatCard.classList.add("inactive");
+    }
+
+    welcomeCard.classList.toggle("inactive");
     timeStart=null;
     startGame();
 }
@@ -691,6 +697,11 @@ let returnToMainMenu = document.querySelector("#menu-button");
 returnToMainMenu.addEventListener("click",welcomeAfterLose)
 
 function welcomeAfterLose() {
-    defeatCard.classList.toggle("inactive");
+    const defeatScreenIsClosed= defeatCard.classList.contains("inactive")
+
+    if(!defeatScreenIsClosed){
+        defeatCard.classList.add("inactive");
+    }
+
     welcomeCard.classList.toggle("inactive");  
 }
