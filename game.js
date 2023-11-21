@@ -74,6 +74,9 @@ btnDown2.addEventListener("click", moveDown);
 
 window.addEventListener("keydown", moveByKeys);
 
+window.addEventListener("touchstart", moveByTouch);
+
+
 /* FUNCIONES */
 
 function setCanvasSize(){
@@ -474,6 +477,25 @@ function moveDown(){
 //función con su único parámetro: descriptor del evento
 
 function moveByKeys(event){
+    switch(event.key){
+        case "ArrowUp":
+            moveUp();
+            break;
+        case "ArrowDown":
+            moveDown();
+            break;
+        case "ArrowLeft":
+            moveLeft();
+            break;
+        case "ArrowRight":
+            moveRight();
+            break;      
+        default:
+            console.log("No_Movement")                  
+    }
+}
+
+function moveByTouch(event) {
     switch(event.key){
         case "ArrowUp":
             moveUp();
